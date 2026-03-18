@@ -82,6 +82,12 @@ export function MonsterDetailPage() {
   const temperedInfo = getTemperedElderInfo(monster.name);
   const borderColor = ATTACK_TYPE_COLORS[monster.normalAttack] || ATTACK_TYPE_COLORS["-"];
 
+  function monsterLink(nameZH: string) {
+    const found = MONSTERS.find((m) => m.name === nameZH);
+    if (!found) return <span>{nameZH}</span>;
+    return <Link to={`/monsters/${found.id}`} className="inline-monster-link">{nameZH}</Link>;
+  }
+
   const RIDE_LABELS = [
     { key: "fly" as const, label: "飛行" },
     { key: "climb" as const, label: "攀爬" },
@@ -175,7 +181,7 @@ export function MonsterDetailPage() {
 
         {statusEff && (
           <section className="detail-section">
-            <h2 className="section-title">異常狀態有效性</h2>
+            <h2 className="section-title">狀態異常耐性</h2>
             <div className="status-eff-table-wrapper">
               <table className="status-eff-table">
                 <thead>
@@ -289,14 +295,14 @@ export function MonsterDetailPage() {
                     {invasiveEvo.subSpecies !== "-" && (
                       <div className="evo-card">
                         <div className="evo-card-type">亞種</div>
-                        <div className="evo-card-name">{invasiveEvo.subSpecies}</div>
+                        <div className="evo-card-name">{monsterLink(invasiveEvo.subSpecies)}</div>
                         <div className="evo-card-condition">{invasiveEvo.subSpeciesCondition}</div>
                       </div>
                     )}
                     {invasiveEvo.deviant !== "-" && (
                       <div className="evo-card evo-card-deviant">
                         <div className="evo-card-type">二名</div>
-                        <div className="evo-card-name">{invasiveEvo.deviant}</div>
+                        <div className="evo-card-name">{monsterLink(invasiveEvo.deviant)}</div>
                         <div className="evo-card-condition">{invasiveEvo.deviantCondition}</div>
                       </div>
                     )}
@@ -314,7 +320,7 @@ export function MonsterDetailPage() {
               <div className="invasive-detail-grid">
                 <div className="invasive-row">
                   <span className="invasive-label">來源侵獸</span>
-                  <span className="invasive-value">{invasiveByUnlock.invasive}</span>
+                  <span className="invasive-value">{monsterLink(invasiveByUnlock.invasive)}</span>
                 </div>
                 <div className="invasive-row">
                   <span className="invasive-label">出現地區</span>
@@ -328,14 +334,14 @@ export function MonsterDetailPage() {
                     {evoByUnlock.subSpecies !== "-" && (
                       <div className="evo-card">
                         <div className="evo-card-type">亞種</div>
-                        <div className="evo-card-name">{evoByUnlock.subSpecies}</div>
+                        <div className="evo-card-name">{monsterLink(evoByUnlock.subSpecies)}</div>
                         <div className="evo-card-condition">{evoByUnlock.subSpeciesCondition}</div>
                       </div>
                     )}
                     {evoByUnlock.deviant !== "-" && (
                       <div className="evo-card evo-card-deviant">
                         <div className="evo-card-type">二名</div>
-                        <div className="evo-card-name">{evoByUnlock.deviant}</div>
+                        <div className="evo-card-name">{monsterLink(evoByUnlock.deviant)}</div>
                         <div className="evo-card-condition">{evoByUnlock.deviantCondition}</div>
                       </div>
                     )}
@@ -356,7 +362,9 @@ export function MonsterDetailPage() {
                   <div className="mutation-detail-grid">
                     <div className="mutation-row">
                       <span className="mutation-label">變異元</span>
-                      <span className="mutation-value">{mutationTo.source}</span>
+                      <span className="mutation-value">{mutationTo.source.split(" / ").map((s, i) => (
+                        <span key={s}>{i > 0 && " / "}{monsterLink(s)}</span>
+                      ))}</span>
                     </div>
                     <div className="mutation-row">
                       <span className="mutation-label">變異條件</span>
@@ -371,7 +379,7 @@ export function MonsterDetailPage() {
                   <div className="mutation-targets">
                     {mutationsFrom.map((m) => (
                       <div key={m.result} className="mutation-target-card">
-                        <div className="mutation-target-name">{m.result}</div>
+                        <div className="mutation-target-name">{monsterLink(m.result)}</div>
                         <div className="mutation-target-jp">{m.resultJP}</div>
                         <div className="mutation-target-condition">{m.condition}</div>
                       </div>

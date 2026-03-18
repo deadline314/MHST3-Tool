@@ -207,62 +207,62 @@ const DATA: Record<string, FormData[]> = {
   ],
 
   // === 兇異 ===
-  "Afflicted Velocidrome": [f("通常", [c("軀幹"), p("本體"), b("頭部")])],
-  "Afflicted Great Izuchi": [f("通常", [c("尾巴"), p("軀幹"), b("頭部")])],
-  "Afflicted Yian Kut-Ku": [f("通常", [c("尾巴"), p("翅膀"), b("頭部")])],
-  "Afflicted Gypceros": [f("通常", [c("尾巴"), p("腹部"), b("頭部")])],
-  "Afflicted Aknosom": [f("通常", [c("翅膀"), p("頭部"), b("尾巴")])],
-  "Afflicted Bishaten": [f("通常", [c("尾巴"), p("翅膀"), b("頭部")])],
-  "Afflicted Blangonga": [f("通常", [c("軀幹"), p("前腳"), b("牙")])],
-  "Afflicted Ajarakan": [
+  "Feral Velocidrome": [f("通常", [c("軀幹"), p("本體"), b("頭部")])],
+  "Feral Great Izuchi": [f("通常", [c("尾巴"), p("軀幹"), b("頭部")])],
+  "Feral Yian Kut-Ku": [f("通常", [c("尾巴"), p("翅膀"), b("頭部")])],
+  "Feral Gypceros": [f("通常", [c("尾巴"), p("腹部"), b("頭部")])],
+  "Feral Aknosom": [f("通常", [c("翅膀"), p("頭部"), b("尾巴")])],
+  "Feral Bishaten": [f("通常", [c("尾巴"), p("翅膀"), b("頭部")])],
+  "Feral Blangonga": [f("通常", [c("軀幹"), p("前腳"), b("牙")])],
+  "Feral Ajarakan": [
     f("通常", [c("腕部"), p("本體"), b("頭部")]),
     f("赤熱化", [c("腕部"), p("反射板"), b("頭部")]),
   ],
-  "Afflicted Chatacabra": [
+  "Feral Chatacabra": [
     f("通常", [c("頭部"), p("軀幹"), b("本體")]),
     f("鑛物纏繞", [c("頭部"), p("軀幹"), b("右腕 / 左腕")]),
   ],
-  "Afflicted Tetranadon": [
+  "Feral Tetranadon": [
     f("通常", [c("尾巴"), p("頭部"), b("腳部")]),
     f("滿腹", [c("腹部 / 尾巴"), p("頭部 / 腹部"), b("腳部 / 腹部")]),
   ],
-  "Afflicted Nerscylla": [f("通常", [c("腳部"), p("尖刺"), b("頭部")])],
-  "Afflicted Rakna-Kadaki": [
+  "Feral Nerscylla": [f("通常", [c("腳部"), p("尖刺"), b("頭部")])],
+  "Feral Rakna-Kadaki": [
     f("糸纏【腳】", [c("前腳 / 胸部"), p("本體"), b("後腳 / 背棘")]),
     f("糸纏【繭】", [c("胸部"), p("繭"), b("背棘")]),
     f("無糸", [c("胸部"), p("本體"), b("背棘")]),
   ],
-  "Afflicted Barroth": [
+  "Feral Barroth": [
     f("通常", [c("尾巴"), p("前腳"), b("頭部")]),
     f("泥纏", [c("尾巴【泥】"), p("前腳【泥】"), b("頭部 / 軀幹【泥】")]),
   ],
-  "Afflicted Glavenus": [
+  "Feral Glavenus": [
     f("通常", [c("尾巴"), p("本體"), b("頭部")]),
     f("赤熱化【尾巴】", [c("尾巴【赤熱】"), p("本體"), b("頭部")]),
   ],
-  "Afflicted Brachydios": [
+  "Feral Brachydios": [
     f("通常", [c("尾巴"), p("前腳【黏菌】"), b("頭部【黏菌】")]),
     f("黏菌枯竭", [c("尾巴"), p("前腳"), b("頭部")]),
   ],
-  "Afflicted Somnacanth": [
+  "Feral Somnacanth": [
     f("通常", [c("尾巴"), p("頭部"), b("腹部")]),
     f("粉溜", [c("本體"), p("喉"), b("本體")]),
   ],
-  "Afflicted Tobi-Kadachi": [f("通常", [c("腳部"), p("頭部"), b("尾巴")])],
-  "Afflicted Magnamalo": [
+  "Feral Tobi-Kadachi": [f("通常", [c("腳部"), p("頭部"), b("尾巴")])],
+  "Feral Magnamalo": [
     f("通常", [c("尾巴"), p("軀幹"), b("本體")]),
     f("鬼火纏身", [c("尾巴"), p("前腳【鬼火】/ 軀幹"), b("頭部【鬼火】")]),
   ],
-  "Afflicted Paolumu": [
+  "Feral Paolumu": [
     f("通常", [c("軀幹"), p("本體"), b("頭部")]),
     f("滯空", [c("本體"), p("頸囊"), b("頭部")]),
   ],
-  "Afflicted Legiana": [
+  "Feral Legiana": [
     f("通常", [c("軀幹"), p("翅膀"), b("頭部")]),
   ],
-  "Afflicted Gravios": [f("通常", [c("腹部"), p("背部"), b("頭部")])],
-  "Afflicted Espinas": [f("通常", [c("尾巴"), p("翅膀"), b("頭部")])],
-  "Afflicted Yama Tsukami": [
+  "Feral Gravios": [f("通常", [c("腹部"), p("背部"), b("頭部")])],
+  "Feral Espinas": [f("通常", [c("尾巴"), p("翅膀"), b("頭部")])],
+  "Feral Yama Tsukami": [
     f("通常", [c("右觸手"), p("左觸手"), b("排出口")]),
     f("開口", [a("口內"), b("排出口")]),
   ],

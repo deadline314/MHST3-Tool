@@ -72,7 +72,7 @@ export const SearchBar = memo(function SearchBar({ value, onChange }: SearchBarP
       <input
         ref={inputRef}
         type="text"
-        placeholder="搜尋魔物名稱 / 拼音 / English...（Ctrl+K）"
+        placeholder="搜尋魔物名稱 / 拼音 / 縮寫 / English...（Ctrl+K）"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="search-input"

@@ -633,7 +633,8 @@ a { color: inherit; text-decoration: none; }
   color: var(--accent); font-weight: 500;
 }
 .invasive-method {
-  line-height: 1.5;
+  line-height: 1.7;
+  white-space: pre-line;
 }
 .mutation-condition {
   line-height: 1.5;
@@ -679,6 +680,12 @@ a { color: inherit; text-decoration: none; }
 .evo-card-name, .mutation-target-name {
   font-size: 0.95rem; font-weight: 600; color: var(--text-primary);
   margin-bottom: 6px;
+}
+.inline-monster-link {
+  color: #4a9eff; text-decoration: none; transition: color 0.2s;
+}
+.inline-monster-link:hover {
+  color: #7bb8ff; text-decoration: underline;
 }
 .mutation-target-jp {
   font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;
