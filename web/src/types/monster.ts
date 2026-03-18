@@ -10,6 +10,7 @@ export interface SpecialAttack {
 }
 
 export interface ElementResist {
+  neutral: ResistLevel;
   fire: ResistLevel;
   water: ResistLevel;
   thunder: ResistLevel;
@@ -83,6 +84,8 @@ export const ATTACK_TYPE_COLORS: Record<string, string> = {
 };
 
 export const ELEMENT_COLORS: Record<string, string> = {
+  無: "#95a5a6",
+  無屬性: "#95a5a6",
   火: "#e74c3c",
   水: "#3498db",
   雷: "#f1c40f",
