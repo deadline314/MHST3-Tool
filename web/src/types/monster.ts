@@ -31,6 +31,12 @@ export interface RideAction {
   burrow: boolean;
 }
 
+export interface BingoBonus {
+  bingo2: string;
+  bingo3: string;
+  bingo5: string;
+}
+
 export interface MonsterLocation {
   locations: string;
   obtainMethod: string;

@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect, createContext, useContext } from "rea
 import { MonsterListPage } from "./pages/MonsterListPage";
 import { MonsterDetailPage } from "./pages/MonsterDetailPage";
 import { GenePlannerPage } from "./pages/GenePlannerPage";
-import type { Filters } from "./hooks/useMonsterFilter";
+import type { Filters, SortOption, RideAbility } from "./hooks/useMonsterFilter";
 import type { AttackType } from "./types/monster";
 import "./App.css";
 
@@ -13,6 +13,10 @@ interface FiltersContextType {
   toggleSpecies: (species: string) => void;
   toggleAttackType: (type: AttackType) => void;
   toggleCategory: (cat: string) => void;
+  toggleLocation: (loc: string) => void;
+  toggleRideAbility: (ability: RideAbility) => void;
+  toggleRideElement: (element: string) => void;
+  setSort: (sort: SortOption) => void;
   clearFilters: () => void;
   hasActiveFilters: boolean;
 }
@@ -30,6 +34,10 @@ const INITIAL_FILTERS: Filters = {
   species: new Set(),
   attackTypes: new Set(),
   categories: new Set(),
+  locations: new Set(),
+  rideAbilities: new Set(),
+  rideElements: new Set(),
+  sort: "default",
 };
 
 function ScrollToTop() {
@@ -74,6 +82,37 @@ function App() {
     });
   }, []);
 
+  const toggleLocation = useCallback((loc: string) => {
+    setFilters((prev) => {
+      const next = new Set(prev.locations);
+      if (next.has(loc)) next.delete(loc);
+      else next.add(loc);
+      return { ...prev, locations: next };
+    });
+  }, []);
+
+  const toggleRideAbility = useCallback((ability: RideAbility) => {
+    setFilters((prev) => {
+      const next = new Set(prev.rideAbilities);
+      if (next.has(ability)) next.delete(ability);
+      else next.add(ability);
+      return { ...prev, rideAbilities: next };
+    });
+  }, []);
+
+  const toggleRideElement = useCallback((element: string) => {
+    setFilters((prev) => {
+      const next = new Set(prev.rideElements);
+      if (next.has(element)) next.delete(element);
+      else next.add(element);
+      return { ...prev, rideElements: next };
+    });
+  }, []);
+
+  const setSort = useCallback((sort: SortOption) => {
+    setFilters((prev) => ({ ...prev, sort }));
+  }, []);
+
   const clearFilters = useCallback(() => {
     setFilters(INITIAL_FILTERS);
   }, []);
@@ -82,11 +121,14 @@ function App() {
     filters.search !== "" ||
     filters.species.size > 0 ||
     filters.attackTypes.size > 0 ||
-    filters.categories.size > 0;
+    filters.categories.size > 0 ||
+    filters.locations.size > 0 ||
+    filters.rideAbilities.size > 0 ||
+    filters.rideElements.size > 0;
 
   return (
     <FiltersContext.Provider
-      value={{ filters, setSearch, toggleSpecies, toggleAttackType, toggleCategory, clearFilters, hasActiveFilters }}
+      value={{ filters, setSearch, toggleSpecies, toggleAttackType, toggleCategory, toggleLocation, toggleRideAbility, toggleRideElement, setSort, clearFilters, hasActiveFilters }}
     >
       <HashRouter>
         <ScrollToTop />

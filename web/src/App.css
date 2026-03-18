@@ -89,7 +89,7 @@ a { color: inherit; text-decoration: none; }
 .search-bar { position: relative; display: flex; align-items: center; }
 .search-icon { position: absolute; left: 14px; width: 18px; height: 18px; color: var(--text-muted); pointer-events: none; }
 .search-input {
-  width: 100%; padding: 12px 40px 12px 42px;
+  width: 100%; padding: 12px 70px 12px 42px;
   background: var(--bg-input); border: 1px solid var(--border);
   border-radius: var(--radius-md); color: var(--text-primary);
   font-size: 0.95rem; outline: none;
@@ -97,6 +97,20 @@ a { color: inherit; text-decoration: none; }
 }
 .search-input::placeholder { color: var(--text-muted); }
 .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+
+.voice-btn {
+  position: absolute; right: 36px; background: none; border: none;
+  color: var(--text-muted); cursor: pointer; padding: 4px;
+  border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+.voice-btn:hover { color: var(--text-primary); background: var(--bg-card); }
+.voice-btn.listening { color: var(--red); animation: voicePulse 1s ease-in-out infinite; }
+@keyframes voicePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 .search-clear {
   position: absolute; right: 10px; background: none; border: none;
   color: var(--text-muted); cursor: pointer; font-size: 0.85rem;
@@ -108,10 +122,29 @@ a { color: inherit; text-decoration: none; }
 /* ===== Filter Panel ===== */
 
 .filter-panel { display: flex; flex-direction: column; gap: 12px; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.filter-row-top { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .filter-section { display: flex; flex-direction: column; gap: 8px; }
+.filter-section-inline { flex-direction: row; align-items: center; gap: 10px; }
 .filter-header { display: flex; align-items: center; justify-content: space-between; }
 .filter-title { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
 .filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.filter-toggle-btn {
+  background: none; border: none; color: var(--accent); cursor: pointer;
+  font-size: 0.72rem; padding: 2px 6px; border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+.filter-toggle-btn:hover { background: var(--accent-dim); }
+
+.sort-select {
+  padding: 5px 10px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--bg-input);
+  color: var(--text-primary); font-size: 0.82rem; cursor: pointer;
+  outline: none; transition: border-color var(--transition-fast);
+}
+.sort-select:focus { border-color: var(--accent); }
+
+.location-sub-chips { padding-left: 8px; border-left: 2px solid var(--border); margin-top: 4px; }
 
 /* ===== Chips ===== */
 
@@ -126,7 +159,12 @@ a { color: inherit; text-decoration: none; }
 .chip.active { border-color: transparent; }
 .species-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 .category-chip.active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+.location-chip.active { background: #0891b2; border-color: #0891b2; color: #fff; }
+.location-chip.sub { font-size: 0.75rem; padding: 3px 10px; }
 .attack-chip.active { background: transparent; font-weight: 600; }
+.ride-ability-chip.active { background: #059669; border-color: #059669; color: #fff; }
+.ride-element-chip.active { font-weight: 600; }
+.ride-element-chip.active:not([style*="borderColor"]) { background: var(--text-muted); border-color: var(--text-muted); color: #fff; }
 
 .clear-filters-btn {
   align-self: flex-start; padding: 6px 14px;
@@ -259,6 +297,95 @@ a { color: inherit; text-decoration: none; }
   font-weight: 600; color: #fff; white-space: nowrap;
 }
 
+/* Damage Effectiveness */
+
+.dmg-eff-table-wrapper { overflow-x: auto; }
+
+.dmg-eff-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  border-radius: var(--radius-md); overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.dmg-eff-table th,
+.dmg-eff-table td {
+  padding: 10px 16px; text-align: center; font-size: 0.88rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.dmg-eff-table thead th {
+  background: var(--bg-card); color: var(--text-secondary);
+  font-weight: 600; font-size: 0.82rem; letter-spacing: 0.03em;
+}
+
+.dmg-eff-table tbody tr:last-child td { border-bottom: none; }
+
+.dmg-eff-table tbody tr {
+  transition: background var(--transition-fast);
+}
+.dmg-eff-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+
+.dmg-eff-part {
+  text-align: left; font-weight: 500; color: var(--text-primary);
+}
+
+.dmg-eff-yes { font-size: 1.1rem; }
+.dmg-eff-no { font-size: 1.1rem; opacity: 0.4; }
+
+.dmg-form-tabs {
+  display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap;
+}
+
+.dmg-form-tab {
+  padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text-secondary); font-size: 0.8rem; font-weight: 500;
+  cursor: pointer; transition: all var(--transition-fast);
+}
+.dmg-form-tab:hover { border-color: var(--border-hover); color: var(--text-primary); }
+.dmg-form-tab.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+/* Status Effectiveness */
+
+.status-eff-table-wrapper { overflow-x: auto; }
+
+.status-eff-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  border-radius: var(--radius-md); overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.status-eff-table th,
+.status-eff-table td {
+  padding: 8px 10px; text-align: center; font-size: 0.85rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.status-eff-table thead th {
+  background: var(--bg-card); color: var(--text-secondary);
+  font-weight: 600; font-size: 0.78rem; letter-spacing: 0.02em;
+  vertical-align: bottom;
+}
+
+.status-eff-table tbody tr:last-child td { border-bottom: none; }
+.status-eff-table tbody tr { transition: background var(--transition-fast); }
+.status-eff-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+
+.status-header-icon {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+
+.status-icon { width: 22px; height: 22px; object-fit: contain; }
+
+.status-eff-cell { font-size: 1rem; }
+.status-low { color: #a0c4ff; }
+.status-mid { color: #ffd166; }
+.status-high { color: #ff6b6b; }
+.status-yes { color: #2ecc71; }
+.status-no { opacity: 0.4; }
+.status-unknown { color: #9aa0a6; opacity: 0.6; }
+
 /* Ride Actions */
 
 .ride-info { display: flex; flex-direction: column; gap: 12px; }
@@ -284,6 +411,20 @@ a { color: inherit; text-decoration: none; }
   padding: 3px 10px; border-radius: var(--radius-sm);
   background: var(--bg-card); border: 1px solid var(--border);
   font-size: 0.8rem; color: var(--text-primary);
+}
+
+/* Bingo Bonus */
+
+.bingo-grid { display: flex; flex-direction: column; gap: 8px; }
+.bingo-row { display: flex; align-items: center; gap: 12px; }
+.bingo-label {
+  font-size: 0.82rem; font-weight: 700; color: var(--accent);
+  min-width: 60px; flex-shrink: 0;
+}
+.bingo-value {
+  font-size: 0.88rem; font-weight: 500; color: var(--text-primary);
+  padding: 4px 12px; border-radius: var(--radius-sm);
+  background: var(--bg-card); border: 1px solid var(--border);
 }
 
 /* Genes */
@@ -444,6 +585,23 @@ a { color: inherit; text-decoration: none; }
   cursor: pointer; transition: all var(--transition-fast);
 }
 .gene-chip-sm:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ===== Related Monsters ===== */
+.related-monsters-grid {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.related-monster-card {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text-primary); text-decoration: none;
+  transition: all var(--transition-fast);
+}
+.related-monster-card:hover { border-color: var(--accent); background: rgba(99, 102, 241, 0.08); }
+.related-monster-icon { width: 36px; height: 36px; object-fit: contain; }
+.related-monster-info { display: flex; flex-direction: column; gap: 2px; }
+.related-monster-name { font-size: 0.9rem; font-weight: 500; }
+.related-monster-en { font-size: 0.75rem; color: var(--text-muted); }
 
 /* ===== Responsive ===== */
 

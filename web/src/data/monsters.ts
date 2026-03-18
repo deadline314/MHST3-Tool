@@ -167,7 +167,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     monsters: [
       { name: "水龍", nameEN: "Plesioth", nameJP: "ガノトトス", species: "魚龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "翠水龍", nameEN: "Green Plesioth", nameJP: "ガノトトス亜種", species: "魚龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 技巧" },
-      { name: "水獸", nameEN: "Ludroth", nameJP: "ルドロス", species: "魚龍種", normalAttack: "力量", specialAttacks: "-" },
+      { name: "水獸", nameEN: "Ludroth", nameJP: "ルドロス", species: "魚龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 技巧" },
     ],
   },
   {
@@ -247,10 +247,10 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "浮岳龍", nameEN: "Yama Tsukami", nameJP: "ヤマツカミ", species: "古龍種", normalAttack: "力量", specialAttacks: "[張口]: 速度 / [憤怒]: 力量" },
       { name: "雷神龍", nameEN: "Thunder Serpent Narwa", nameJP: "ナルハタタヒメ", species: "古龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧" },
       { name: "風神龍", nameEN: "Wind Serpent Ibushi", nameJP: "イブシマキヒコ", species: "古龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
-      { name: "麒麟", nameEN: "Kirin", nameJP: "キリン", species: "古龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧" },
-      { name: "炎王龍", nameEN: "Teostra", nameJP: "テオ・テスカトル", species: "古龍種", normalAttack: "力量", specialAttacks: "[爆炎]: 技巧" },
-      { name: "鋼龍", nameEN: "Kushala Daora", nameJP: "クシャルダオラ", species: "古龍種", normalAttack: "技巧", specialAttacks: "[風鎧]: 速度" },
-      { name: "滅盡龍", nameEN: "Nergigante", nameJP: "ネルギガンテ", species: "古龍種", normalAttack: "力量", specialAttacks: "[再生棘]: 技巧" },
+      // { name: "麒麟", nameEN: "Kirin", nameJP: "キリン", species: "古龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧" },
+      // { name: "炎王龍", nameEN: "Teostra", nameJP: "テオ・テスカトル", species: "古龍種", normalAttack: "力量", specialAttacks: "[爆炎]: 技巧" },
+      // { name: "鋼龍", nameEN: "Kushala Daora", nameJP: "クシャルダオラ", species: "古龍種", normalAttack: "技巧", specialAttacks: "[風鎧]: 速度" },
+      // { name: "滅盡龍", nameEN: "Nergigante", nameJP: "ネルギガンテ", species: "古龍種", normalAttack: "力量", specialAttacks: "[再生棘]: 技巧" },
     ],
   },
   {
@@ -309,11 +309,13 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
   },
 ];
 
-let idCounter = 0;
+function toSlug(nameEN: string): string {
+  return nameEN.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/(^_|_$)/g, "");
+}
 
 export const MONSTERS: Monster[] = RAW_DATA.flatMap(({ category, monsters }) =>
   monsters.map((m) => ({
-    id: `monster-${idCounter++}`,
+    id: toSlug(m.nameEN),
     name: m.name,
     nameEN: m.nameEN,
     nameJP: m.nameJP,
@@ -325,3 +327,70 @@ export const MONSTERS: Monster[] = RAW_DATA.flatMap(({ category, monsters }) =>
     icon: getIconPath(m.nameEN),
   }))
 );
+
+const RELATED_FAMILIES: string[][] = [
+  ["Yian Kut-Ku", "Blue Yian Kut-Ku", "Afflicted Yian Kut-Ku"],
+  ["Gypceros", "Purple Gypceros", "Afflicted Gypceros"],
+  ["Yian Garuga", "Deadeye Yian Garuga"],
+  ["Great Izuchi", "Izuchi", "Afflicted Great Izuchi"],
+  ["Velocidrome", "Velociprey", "Exotic Velocidrome", "Afflicted Velocidrome"],
+  ["Chatacabra", "Afflicted Chatacabra"],
+  ["Tetranadon", "Afflicted Tetranadon"],
+  ["Bishaten", "Blood Orange Bishaten", "Afflicted Bishaten"],
+  ["Blangonga", "Blango", "Afflicted Blangonga"],
+  ["Ajarakan", "Afflicted Ajarakan"],
+  ["Aknosom", "Afflicted Aknosom"],
+  ["Zinogre", "Stygian Zinogre", "Thunderlord Zinogre"],
+  ["Lunagaron", "Bound Lunagaron"],
+  ["Odogaron", "Ebony Odogaron"],
+  ["Magnamalo", "Afflicted Magnamalo"],
+  ["Tobi-Kadachi", "Afflicted Tobi-Kadachi"],
+  ["Barroth", "Jade Barroth", "Afflicted Barroth"],
+  ["Diablos", "Black Diablos", "Bloodbath Diablos"],
+  ["Glavenus", "Hellblade Glavenus", "Honed Glavenus", "Afflicted Glavenus"],
+  ["Anjanath", "Fulgur Anjanath"],
+  ["Brachydios", "Afflicted Brachydios"],
+  ["Plesioth", "Green Plesioth"],
+  ["Ludroth", "Royal Ludroth", "Purple Ludroth"],
+  ["Lagiacrus", "Ivory Lagiacrus"],
+  ["Mizutsune", "Soulseer Mizutsune"],
+  ["Somnacanth", "Aurora Somnacanth", "Afflicted Somnacanth"],
+  ["Nerscylla", "Shrouded Nerscylla", "Afflicted Nerscylla"],
+  ["Rakna-Kadaki", "Afflicted Rakna-Kadaki"],
+  ["Rathian", "Pink Rathian", "Dreadqueen Rathian"],
+  ["Rathalos", "Azure Rathalos", "Dreadking Rathalos", "Bound Azure Rathalos"],
+  ["Barioth", "Sand Barioth"],
+  ["Nargacuga", "Silverwind Nargacuga", "Green Nargacuga"],
+  ["Tigrex", "Brute Tigrex", "Grimclaw Tigrex"],
+  ["Astalos", "Boltreaver Astalos"],
+  ["Gravios", "Black Gravios", "Afflicted Gravios"],
+  ["Khezu", "Red Khezu"],
+  ["Espinas", "Afflicted Espinas"],
+  ["Seregios", "Exotic Seregios"],
+  ["Legiana", "Exotic Legiana", "Afflicted Legiana"],
+  ["Nibelsnarf", "Exotic Nibelsnarf"],
+  ["Paolumu", "Afflicted Paolumu"],
+  ["Garangolm"],
+  ["Velkhana", "Tempered Velkhana"],
+  ["Namielle", "Tempered Namielle"],
+  ["Yama Tsukami", "Tempered Yama Tsukami", "Afflicted Yama Tsukami"],
+  ["Thunder Serpent Narwa", "Tempered Narwa"],
+  ["Wind Serpent Ibushi", "Tempered Ibushi"],
+  ["Shogun Ceanataur", "Ceanataur"],
+];
+
+const FAMILY_INDEX = new Map<string, string[]>();
+for (const family of RELATED_FAMILIES) {
+  for (const name of family) {
+    FAMILY_INDEX.set(name, family);
+  }
+}
+
+export function getRelatedMonsters(nameEN: string): Monster[] {
+  const family = FAMILY_INDEX.get(nameEN);
+  if (!family) return [];
+  return family
+    .filter((n) => n !== nameEN)
+    .map((n) => MONSTERS.find((m) => m.nameEN === n))
+    .filter((m): m is Monster => m != null);
+}

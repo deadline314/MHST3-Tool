@@ -33,7 +33,7 @@ const WEAKNESS_RAW: Record<string, [string, string, string, string, string]> = {
   "Fulgur Anjanath": ["普通", "普通", "弱點", "耐性", "大弱點"],
   "Glavenus": ["普通", "耐性", "大弱點", "微耐", "弱點"],
   "Brachydios": ["普通", "耐性", "大弱點", "普通", "弱點"],
-  "Deviljho": ["不明", "不明", "不明", "不明", "不明"],
+  "Deviljho": ["普通", "普通", "普通", "大弱點", "微耐"],
   "Plesioth": ["普通", "弱點", "耐性", "大弱點", "普通"],
   "Green Plesioth": ["普通", "弱點", "耐性", "大弱點", "微耐"],
   "Royal Ludroth": ["普通", "大弱點", "耐性", "弱點", "普通"],
@@ -118,7 +118,29 @@ const WEAKNESS_RAW: Record<string, [string, string, string, string, string]> = {
 };
 
 const FERAL_WEAKNESS_MAP: Record<string, string> = {
+  "Afflicted Chatacabra": "Feral Chatacabra",
+  "Afflicted Yian Kut-Ku": "Feral Yian Kut-Ku",
+  "Afflicted Velocidrome": "Feral Velocidrome",
+  "Afflicted Gypceros": "Feral Gypceros",
+  "Afflicted Somnacanth": "Feral Somnacanth",
+  "Afflicted Great Izuchi": "Feral Great Izuchi",
+  "Afflicted Aknosom": "Feral Aknosom",
+  "Afflicted Nerscylla": "Feral Nerscylla",
+  "Afflicted Brachydios": "Feral Brachydios",
+  "Afflicted Paolumu": "Feral Paolumu",
+  "Afflicted Bishaten": "Feral Bishaten",
+  "Afflicted Tetranadon": "Feral Tetranadon",
+  "Afflicted Espinas": "Feral Espinas",
+  "Afflicted Tobi-Kadachi": "Feral Tobi-Kadachi",
+  "Afflicted Barroth": "Feral Barroth",
+  "Afflicted Glavenus": "Feral Glavenus",
+  "Afflicted Gravios": "Feral Gravios",
+  "Afflicted Legiana": "Feral Legiana",
+  "Afflicted Magnamalo": "Feral Magnamalo",
   "Afflicted Yama Tsukami": "Yama Tsukami (Feral)",
+  "Afflicted Ajarakan": "Feral Ajarakan",
+  "Afflicted Rakna-Kadaki": "Feral Rakna-Kadaki",
+  "Afflicted Blangonga": "Feral Blangonga",
 };
 
 export function getWeakness(nameEN: string): ElementResist | null {

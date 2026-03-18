@@ -6,8 +6,11 @@ import { MonsterGrid } from "../components/MonsterGrid";
 import { MONSTERS } from "../data/monsters";
 
 export function MonsterListPage() {
-  const { filters, setSearch, toggleSpecies, toggleAttackType, toggleCategory, clearFilters, hasActiveFilters } =
-    useFiltersContext();
+  const {
+    filters, setSearch, toggleSpecies, toggleAttackType,
+    toggleCategory, toggleLocation, toggleRideAbility, toggleRideElement,
+    setSort, clearFilters, hasActiveFilters,
+  } = useFiltersContext();
   const filtered = useFilteredMonsters(filters);
 
   return (
@@ -20,6 +23,10 @@ export function MonsterListPage() {
           onToggleSpecies={toggleSpecies}
           onToggleAttackType={toggleAttackType}
           onToggleCategory={toggleCategory}
+          onToggleLocation={toggleLocation}
+          onToggleRideAbility={toggleRideAbility}
+          onToggleRideElement={toggleRideElement}
+          onSortChange={setSort}
           onClear={clearFilters}
         />
       </div>

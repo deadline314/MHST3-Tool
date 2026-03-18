@@ -1,0 +1,113 @@
+export type StatusLevel = "⭐" | "⭐⭐" | "⭐⭐⭐" | "✔" | "❌" | "❌❌" | "❓" | "X";
+
+export interface StatusEffectiveness {
+  poison: StatusLevel;
+  burn: StatusLevel;
+  paralysis: StatusLevel;
+  sleep: StatusLevel;
+  blastblight: StatusLevel;
+  bleeding: StatusLevel;
+  blind: StatusLevel;
+  stun: StatusLevel;
+  typeseal: StatusLevel;
+  skillseal: StatusLevel;
+  cyclone: StatusLevel;
+  ko: StatusLevel;
+}
+
+export const STATUS_LABELS: { key: keyof StatusEffectiveness; label: string; icon?: string }[] = [
+  { key: "poison", label: "毒", icon: "/status_icons/UI-Poison.png" },
+  { key: "burn", label: "火傷", icon: "/status_icons/UI-Fireblight.png" },
+  { key: "paralysis", label: "麻痺", icon: "/status_icons/UI-Paralysis.png" },
+  { key: "sleep", label: "睡眠", icon: "/status_icons/UI-Sleep.png" },
+  { key: "blastblight", label: "爆破", icon: "/status_icons/UI-Blastblight.png" },
+  { key: "bleeding", label: "出血", icon: "/status_icons/UI-Bleeding.png" },
+  { key: "blind", label: "目眩" },
+  { key: "stun", label: "暈眩", icon: "/status_icons/UI-Stun.png" },
+  { key: "typeseal", label: "屬性封印" },
+  { key: "skillseal", label: "技能封印" },
+  { key: "cyclone", label: "龍捲風" },
+  { key: "ko", label: "即死" },
+];
+
+type R = [StatusLevel, StatusLevel, StatusLevel, StatusLevel, StatusLevel, StatusLevel, StatusLevel, StatusLevel, StatusLevel, StatusLevel, StatusLevel, StatusLevel];
+
+const DATA: Record<string, R> = {
+  "Kulu-Ya-Ku":              ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Yian Kut-Ku":             ["⭐",   "❌", "⭐",   "⭐",   "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Blue Yian Kut-Ku":        ["⭐",   "❌", "⭐",   "⭐",   "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Velocidrome":             ["⭐⭐", "⭐", "⭐",   "⭐",   "⭐⭐", "⭐⭐", "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Gypceros":                ["❌❌", "⭐", "❌",   "⭐",   "⭐",   "❌",   "❌",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Purple Gypceros":         ["❌❌", "⭐", "❌",   "⭐",   "⭐",   "❌",   "❌",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Deadeye Yian Garuga":     ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Great Izuchi":            ["✔",   "✔", "✔",   "✔",   "✔",   "✔",   "✔",   "✔", "X",  "✔", "✔", "✔"],
+  "Velociprey":              ["✔",   "✔", "✔",   "✔",   "✔",   "✔",   "✔",   "X",  "X",  "X",  "✔", "✔"],
+  "Chatacabra":              ["⭐",   "⭐", "⭐",   "⭐",   "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Bishaten":                ["✔",   "✔", "✔",   "✔",   "✔",   "✔",   "✔",   "✔", "X",  "✔", "✔", "✔"],
+  "Blood Orange Bishaten":   ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Blangonga":               ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Goss Harag":              ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Ajarakan":                ["✔",   "✔", "✔",   "✔",   "✔",   "✔",   "✔",   "✔", "X",  "✔", "✔", "✔"],
+  "Stygian Zinogre":         ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Lunagaron":               ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Tobi-Kadachi":            ["⭐⭐", "⭐", "❌",   "⭐",   "⭐",   "⭐",   "⭐⭐", "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Odogaron":                ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Ebony Odogaron":          ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Jade Barroth":            ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Diablos":                 ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Black Diablos":           ["✔",   "✔", "✔",   "✔",   "✔",   "✔",   "✔",   "✔", "X",  "✔", "✔", "✔"],
+  "Bloodbath Diablos":       ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Anjanath":                ["⭐",   "❌", "⭐",   "⭐",   "❌",   "⭐",   "⭐⭐", "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Fulgur Anjanath":         ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Brachydios":              ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Plesioth":                ["⭐",   "⭐", "⭐⭐", "❌",   "❌",   "⭐",   "⭐⭐", "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Green Plesioth":          ["⭐",   "⭐", "⭐⭐", "❌",   "❌",   "⭐",   "⭐⭐", "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Ivory Lagiacrus":         ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Soulseer Mizutsune":      ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Almudron":                ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Royal Ludroth":           ["⭐",   "⭐⭐","⭐",   "⭐",   "⭐⭐", "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Purple Ludroth":          ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Aurora Somnacanth":       ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Shogun Ceanataur":        ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Nerscylla":               ["❌",   "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Shrouded Nerscylla":      ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Nibelsnarf":              ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Paolumu":                 ["⭐",   "⭐⭐","⭐",   "⭐⭐", "⭐",   "⭐",   "⭐⭐", "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Barioth":                 ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Sand Barioth":            ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Silverwind Nargacuga":    ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Green Nargacuga":         ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Astalos":                 ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Boltreaver Astalos":      ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Azure Rathalos":          ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Dreadking Rathalos":      ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Black Gravios":           ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Red Khezu":               ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Espinas":                 ["❌",   "❌", "❌",   "❓",   "❓",   "❓",   "❓",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Velkhana":                ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Namielle":                ["⭐⭐", "⭐", "❓",   "❌",   "❓",   "❓",   "❓",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Malzeno":                 ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Yama Tsukami":            ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Thunder Serpent Narwa":   ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Wind Serpent Ibushi":     ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Invasive Yian Garuga":    ["❌",   "❌", "❓",   "❌",   "❓",   "❓",   "❓",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Aptonoth":                ["✔",   "✔", "✔",   "✔",   "✔",   "✔",   "✔",   "✔", "X",  "✔", "✔", "✔"],
+  "Bnahabra":                ["✔",   "✔", "✔",   "✔",   "✔",   "✔",   "✔",   "✔", "X",  "✔", "✔", "✔"],
+  "Blango":                  ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Ceanataur":               ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Gargwa":                  ["⭐⭐", "⭐", "❌",   "❌❌", "⭐",   "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+  "Ludroth":                 ["⭐⭐", "⭐⭐","⭐⭐", "⭐",   "⭐⭐", "⭐",   "⭐",   "⭐", "⭐", "⭐", "⭐", "⭐"],
+};
+
+const KEYS: (keyof StatusEffectiveness)[] = [
+  "poison", "burn", "paralysis", "sleep", "blastblight",
+  "bleeding", "blind", "stun", "typeseal", "skillseal", "cyclone", "ko",
+];
+
+export function getStatusEffectiveness(nameEN: string): StatusEffectiveness | null {
+  const raw = DATA[nameEN];
+  if (!raw) return null;
+  const result = {} as StatusEffectiveness;
+  KEYS.forEach((k, i) => { result[k] = raw[i]; });
+  return result;
+}

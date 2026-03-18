@@ -128,9 +128,13 @@ export function GenePlannerPage() {
 
         <div className="gene-info-section">
           <h2 className="section-title">基因查詢</h2>
-          <p className="gene-info-hint">點選基因名稱來查看擁有該基因的魔物</p>
+          <p className="gene-info-hint">
+            {usedGenes.size > 0
+              ? "已篩選為九宮格上的基因，點選查看擁有該基因的魔物"
+              : "點選基因名稱來查看擁有該基因的魔物"}
+          </p>
           <div className="gene-all-list">
-            {allGenes.map((gene) => (
+            {(usedGenes.size > 0 ? allGenes.filter((g) => usedGenes.has(g)) : allGenes).map((gene) => (
               <button
                 key={gene}
                 className={`gene-chip ${selectedGeneInfo === gene ? "expanded" : ""}`}

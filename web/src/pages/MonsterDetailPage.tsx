@@ -1,12 +1,16 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { MONSTERS } from "../data/monsters";
+import { MONSTERS, getRelatedMonsters } from "../data/monsters";
 import { getWeakness } from "../data/weakness";
 import { getRideAction } from "../data/rideActions";
 import { getLocation } from "../data/locations";
 import { getGenes } from "../data/genes";
 import { getMonstersWithGene } from "../data/genes";
 import { geneToZH } from "../data/geneTranslations";
+import { getBingoBonus } from "../data/bingoBonus";
+import { getDamageEffectiveness } from "../data/damageEffectiveness";
+import { getStatusEffectiveness, STATUS_LABELS } from "../data/statusEffectiveness";
+import type { StatusLevel } from "../data/statusEffectiveness";
 import { ATTACK_TYPE_COLORS, ELEMENT_COLORS, RESIST_LEVEL_COLORS } from "../types/monster";
 import type { ResistLevel } from "../types/monster";
 import { AttackTypeIcon } from "../components/AttackTypeIcon";
@@ -27,11 +31,28 @@ function RideActionBadge({ label, active }: { label: string; active: boolean }) 
   );
 }
 
+const STATUS_CELL_CLASSES: Record<string, string> = {
+  "⭐": "status-low",
+  "⭐⭐": "status-mid",
+  "⭐⭐⭐": "status-high",
+  "✔": "status-yes",
+  "❌": "status-no",
+  "❌❌": "status-no",
+  "❓": "status-unknown",
+  "X": "status-no",
+};
+
+function StatusCell({ level }: { level: StatusLevel }) {
+  const cls = STATUS_CELL_CLASSES[level] || "";
+  return <td className={`status-eff-cell ${cls}`}>{level}</td>;
+}
+
 export function MonsterDetailPage() {
   const { monsterId } = useParams<{ monsterId: string }>();
   const navigate = useNavigate();
   const [imgError, setImgError] = useState(false);
   const [expandedGene, setExpandedGene] = useState<string | null>(null);
+  const [activeForm, setActiveForm] = useState(0);
 
   const monster = MONSTERS.find((m) => m.id === monsterId);
   if (!monster) {
@@ -47,6 +68,10 @@ export function MonsterDetailPage() {
   const rideAction = getRideAction(monster.nameEN);
   const location = getLocation(monster.nameEN);
   const genes = getGenes(monster.nameEN);
+  const relatedMonsters = getRelatedMonsters(monster.nameEN);
+  const bingoBonus = getBingoBonus(monster.nameEN);
+  const damageEff = getDamageEffectiveness(monster.nameEN);
+  const statusEff = getStatusEffectiveness(monster.nameEN);
   const borderColor = ATTACK_TYPE_COLORS[monster.normalAttack] || ATTACK_TYPE_COLORS["-"];
 
   const RIDE_LABELS = [
@@ -140,6 +165,82 @@ export function MonsterDetailPage() {
           </section>
         )}
 
+        {statusEff && (
+          <section className="detail-section">
+            <h2 className="section-title">異常狀態有效性</h2>
+            <div className="status-eff-table-wrapper">
+              <table className="status-eff-table">
+                <thead>
+                  <tr>
+                    {STATUS_LABELS.map(({ key, label, icon }) => (
+                      <th key={key}>
+                        {icon ? (
+                          <div className="status-header-icon">
+                            <img src={icon} alt={label} className="status-icon" />
+                            <span>{label}</span>
+                          </div>
+                        ) : (
+                          <span>{label}</span>
+                        )}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {STATUS_LABELS.map(({ key }) => (
+                      <StatusCell key={key} level={statusEff[key]} />
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {damageEff && (
+          <section className="detail-section">
+            <h2 className="section-title">傷害效果</h2>
+            {damageEff.forms.length > 1 && (
+              <div className="dmg-form-tabs">
+                {damageEff.forms.map((fd, i) => (
+                  <button
+                    key={fd.form}
+                    className={`dmg-form-tab ${activeForm === i ? "active" : ""}`}
+                    onClick={() => setActiveForm(i)}
+                  >
+                    {fd.form}
+                  </button>
+                ))}
+              </div>
+            )}
+            {damageEff.forms[activeForm] && (
+              <div className="dmg-eff-table-wrapper">
+                <table className="dmg-eff-table">
+                  <thead>
+                    <tr>
+                      <th>部位</th>
+                      <th>斬擊</th>
+                      <th>打擊</th>
+                      <th>穿刺</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {damageEff.forms[activeForm].parts.map((pt) => (
+                      <tr key={pt.part}>
+                        <td className="dmg-eff-part">{pt.part}</td>
+                        <td className={pt.cutting === "⭐" ? "dmg-eff-yes" : "dmg-eff-no"}>{pt.cutting}</td>
+                        <td className={pt.blunt === "⭐" ? "dmg-eff-yes" : "dmg-eff-no"}>{pt.blunt}</td>
+                        <td className={pt.piercing === "⭐" ? "dmg-eff-yes" : "dmg-eff-no"}>{pt.piercing}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </section>
+        )}
+
         {rideAction && (
           <section className="detail-section">
             <h2 className="section-title">騎乘資訊</h2>
@@ -181,6 +282,26 @@ export function MonsterDetailPage() {
           </section>
         )}
 
+        {bingoBonus && (
+          <section className="detail-section">
+            <h2 className="section-title">賓果數加成</h2>
+            <div className="bingo-grid">
+              <div className="bingo-row">
+                <span className="bingo-label">2 賓果</span>
+                <span className="bingo-value">{bingoBonus.bingo2}</span>
+              </div>
+              <div className="bingo-row">
+                <span className="bingo-label">3 賓果</span>
+                <span className="bingo-value">{bingoBonus.bingo3}</span>
+              </div>
+              <div className="bingo-row">
+                <span className="bingo-label">5 賓果</span>
+                <span className="bingo-value">{bingoBonus.bingo5}</span>
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="detail-section">
           <h2 className="section-title">羈絆基因</h2>
           {genes === null ? (
@@ -215,6 +336,28 @@ export function MonsterDetailPage() {
             </div>
           )}
         </section>
+
+        {relatedMonsters.length > 0 && (
+          <section className="detail-section">
+            <h2 className="section-title">相關魔物</h2>
+            <div className="related-monsters-grid">
+              {relatedMonsters.map((rm) => (
+                <Link key={rm.id} to={`/monsters/${rm.id}`} className="related-monster-card">
+                  <img
+                    src={rm.icon}
+                    alt={rm.name}
+                    className="related-monster-icon"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
+                  <div className="related-monster-info">
+                    <span className="related-monster-name">{rm.name}</span>
+                    <span className="related-monster-en">{rm.nameEN}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );

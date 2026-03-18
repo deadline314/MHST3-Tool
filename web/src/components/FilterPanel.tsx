@@ -1,8 +1,18 @@
-import { memo } from "react";
-import { SPECIES_LIST, ATTACK_TYPES, ATTACK_TYPE_COLORS, CATEGORY_LIST } from "../types/monster";
-import type { Filters } from "../hooks/useMonsterFilter";
+import { memo, useState } from "react";
+import { SPECIES_LIST, ATTACK_TYPES, ATTACK_TYPE_COLORS, CATEGORY_LIST, ELEMENT_COLORS } from "../types/monster";
+import { REGION_LIST, LOCATION_LIST } from "../data/locations";
+import type { Filters, SortOption, RideAbility } from "../hooks/useMonsterFilter";
+import { RIDE_ABILITIES, RIDE_ELEMENTS } from "../hooks/useMonsterFilter";
 import type { AttackType } from "../types/monster";
 import { AttackTypeIcon } from "./AttackTypeIcon";
+
+const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: "default", label: "預設排序" },
+  { value: "name", label: "中文名稱" },
+  { value: "nameEN", label: "英文名稱" },
+  { value: "species", label: "種類" },
+  { value: "location", label: "地區" },
+];
 
 interface FilterPanelProps {
   filters: Filters;
@@ -10,6 +20,10 @@ interface FilterPanelProps {
   onToggleSpecies: (species: string) => void;
   onToggleAttackType: (type: AttackType) => void;
   onToggleCategory: (cat: string) => void;
+  onToggleLocation: (loc: string) => void;
+  onToggleRideAbility: (ability: RideAbility) => void;
+  onToggleRideElement: (element: string) => void;
+  onSortChange: (sort: SortOption) => void;
   onClear: () => void;
 }
 
@@ -19,14 +33,33 @@ export const FilterPanel = memo(function FilterPanel({
   onToggleSpecies,
   onToggleAttackType,
   onToggleCategory,
+  onToggleLocation,
+  onToggleRideAbility,
+  onToggleRideElement,
+  onSortChange,
   onClear,
 }: FilterPanelProps) {
+  const [locationExpanded, setLocationExpanded] = useState(false);
+
   return (
     <div className="filter-panel">
-      <div className="filter-section">
-        <div className="filter-header">
-          <h3 className="filter-title">攻擊類型</h3>
+      <div className="filter-row-top">
+        <div className="filter-section filter-section-inline">
+          <h3 className="filter-title">排序</h3>
+          <select
+            className="sort-select"
+            value={filters.sort}
+            onChange={(e) => onSortChange(e.target.value as SortOption)}
+          >
+            {SORT_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
         </div>
+      </div>
+
+      <div className="filter-section">
+        <h3 className="filter-title">攻擊類型</h3>
         <div className="filter-chips">
           {ATTACK_TYPES.map((type) => (
             <button
@@ -47,9 +80,7 @@ export const FilterPanel = memo(function FilterPanel({
       </div>
 
       <div className="filter-section">
-        <div className="filter-header">
-          <h3 className="filter-title">種類</h3>
-        </div>
+        <h3 className="filter-title">種類</h3>
         <div className="filter-chips">
           {SPECIES_LIST.map((species) => (
             <button
@@ -64,9 +95,7 @@ export const FilterPanel = memo(function FilterPanel({
       </div>
 
       <div className="filter-section">
-        <div className="filter-header">
-          <h3 className="filter-title">分類</h3>
-        </div>
+        <h3 className="filter-title">分類</h3>
         <div className="filter-chips">
           {CATEGORY_LIST.map((cat) => (
             <button
@@ -75,6 +104,77 @@ export const FilterPanel = memo(function FilterPanel({
               onClick={() => onToggleCategory(cat)}
             >
               {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="filter-section">
+        <div className="filter-header">
+          <h3 className="filter-title">地區</h3>
+          <button
+            className="filter-toggle-btn"
+            onClick={() => setLocationExpanded(!locationExpanded)}
+          >
+            {locationExpanded ? "收起子地點" : "展開子地點"}
+          </button>
+        </div>
+        <div className="filter-chips">
+          {REGION_LIST.map((region) => (
+            <button
+              key={region}
+              className={`chip location-chip ${filters.locations.has(region) ? "active" : ""}`}
+              onClick={() => onToggleLocation(region)}
+            >
+              {region}
+            </button>
+          ))}
+        </div>
+        {locationExpanded && (
+          <div className="filter-chips location-sub-chips">
+            {LOCATION_LIST.map((loc) => (
+              <button
+                key={loc}
+                className={`chip location-chip sub ${filters.locations.has(loc) ? "active" : ""}`}
+                onClick={() => onToggleLocation(loc)}
+              >
+                {loc.split("：")[1]}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="filter-section">
+        <h3 className="filter-title">騎乘能力</h3>
+        <div className="filter-chips">
+          {RIDE_ABILITIES.map(({ key, label }) => (
+            <button
+              key={key}
+              className={`chip ride-ability-chip ${filters.rideAbilities.has(key) ? "active" : ""}`}
+              onClick={() => onToggleRideAbility(key)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="filter-section">
+        <h3 className="filter-title">騎乘攻擊屬性</h3>
+        <div className="filter-chips">
+          {RIDE_ELEMENTS.map((el) => (
+            <button
+              key={el}
+              className={`chip ride-element-chip ${filters.rideElements.has(el) ? "active" : ""}`}
+              style={
+                filters.rideElements.has(el) && el !== "無"
+                  ? { borderColor: ELEMENT_COLORS[el], color: ELEMENT_COLORS[el], backgroundColor: `${ELEMENT_COLORS[el]}18` }
+                  : {}
+              }
+              onClick={() => onToggleRideElement(el)}
+            >
+              {el}
             </button>
           ))}
         </div>
