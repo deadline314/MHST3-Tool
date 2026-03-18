@@ -112,6 +112,8 @@ const WEAKNESS_RAW: Record<string, [string, string, string, string, string, stri
   "Thunder Serpent Narwa": ["普通", "微耐", "普通", "耐性", "大弱點", "弱點"],
   "Tigrex": ["普通", "耐性", "普通", "大弱點", "微耐", "弱點"],
   "Tobi-Kadachi": ["普通", "弱點", "大弱點", "耐性", "普通", "微耐"],
+  "Bound Azure Rathalos": ["普通", "耐性", "普通", "微耐", "弱點", "大弱點"],
+  "Bound Lunagaron": ["普通", "大弱點", "微耐", "弱點", "耐性", "普通"],
   "Velkhana": ["普通", "大弱點", "微耐", "弱點", "耐性", "弱點"],
   "Velocidrome": ["普通", "弱點", "普通", "普通", "大弱點", "耐性"],
   "Wind Serpent Ibushi": ["普通", "大弱點", "普通", "微耐", "耐性", "弱點"],

@@ -44,6 +44,8 @@ const ICON_OVERRIDES: Record<string, string> = {
   "Tempered Narwa": "Thunder_Serpent_Narwa",
   "Tempered Yama Tsukami": "Yama_Tsukami",
   "Tempered Velkhana": "Velkhana",
+  "Bound Azure Rathalos": "Bound_Azure_Rathalos",
+  "Bound Lunagaron": "Bound_Lunagaron",
   // "Feral Chatacabra": "Chatacabra",
   // "Feral Yian Kut-Ku": "Yian_Kut-Ku",
   // "Feral Velocidrome": "Velocidrome",
@@ -83,7 +85,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "草食龍", nameEN: "Aptonoth", nameJP: "アプトノス", species: "草食種", normalAttack: "力量", specialAttacks: "-" },
       { name: "精靈鹿", nameEN: "Kelbi", nameJP: "ケルビ", species: "草食種", normalAttack: "-", specialAttacks: "-" },
       { name: "雲羊鹿", nameEN: "Moofah", nameJP: "モーファ", species: "草食種", normalAttack: "-", specialAttacks: "-" },
-      { name: "草食獸", nameEN: "Slagtoth", nameJP: "スラグトス", species: "草食種", normalAttack: "力量", specialAttacks: "-" },
+      // { name: "草食獸", nameEN: "Slagtoth", nameJP: "スラグトス", species: "草食種", normalAttack: "力量", specialAttacks: "-" },
     ],
   },
   {
@@ -257,8 +259,8 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     category: "特殊（劇情 / Exotic / Honed）",
     monsters: [
       { name: "強化斬龍", nameEN: "Honed Glavenus", nameJP: "強化竜ディノバルド", species: "獸龍種", normalAttack: "速度", specialAttacks: "[異常化]: 技巧 / [憤怒]: 力量" },
-      { name: "束縛蒼火龍", nameEN: "Bound Azure Rathalos", nameJP: "束縛リオレウス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "-" },
-      { name: "束縛冰狼龍", nameEN: "Bound Lunagaron", nameJP: "束縛ルナガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[冰鎧]: 力量" },
+      { name: "超龍化蒼火龍", nameEN: "Bound Azure Rathalos", nameJP: "超龍化リオレウス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [超龍化解放]: 技巧" },
+      { name: "超龍化冰狼龍", nameEN: "Bound Lunagaron", nameJP: "超龍化ルナガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量 / [超龍化解放]: 技巧" },
       { name: "侵獸迅猛龍王", nameEN: "Exotic Velocidrome", nameJP: "珍種ドスランポス", species: "鳥龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "侵獸千刃龍", nameEN: "Exotic Seregios", nameJP: "珍種セルレギオス", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 技巧" },
       { name: "侵獸風漂龍", nameEN: "Exotic Legiana", nameJP: "珍種レイギエナ", species: "飛龍種", normalAttack: "速度", specialAttacks: "[異常化]: 技巧" },
