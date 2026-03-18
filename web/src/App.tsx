@@ -1,5 +1,5 @@
-import { HashRouter, Routes, Route, NavLink, Navigate } from "react-router-dom";
-import { useState, useCallback, createContext, useContext } from "react";
+import { HashRouter, Routes, Route, NavLink, Navigate, useLocation } from "react-router-dom";
+import { useState, useCallback, useEffect, createContext, useContext } from "react";
 import { MonsterListPage } from "./pages/MonsterListPage";
 import { MonsterDetailPage } from "./pages/MonsterDetailPage";
 import { GenePlannerPage } from "./pages/GenePlannerPage";
@@ -31,6 +31,14 @@ const INITIAL_FILTERS: Filters = {
   attackTypes: new Set(),
   categories: new Set(),
 };
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   const [filters, setFilters] = useState<Filters>(INITIAL_FILTERS);
@@ -81,6 +89,7 @@ function App() {
       value={{ filters, setSearch, toggleSpecies, toggleAttackType, toggleCategory, clearFilters, hasActiveFilters }}
     >
       <HashRouter>
+        <ScrollToTop />
         <div className="app">
           <header className="app-header">
             <div className="header-content">
