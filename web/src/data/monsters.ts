@@ -124,7 +124,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     monsters: [
       { name: "青熊獸", nameEN: "Arzuros", nameJP: "アオアシラ", species: "牙獸種", normalAttack: "力量", specialAttacks: "[憤怒]: 技巧" },
       { name: "桃毛獸", nameEN: "Bishaten", nameJP: "ビシュテンゴ", species: "牙獸種", normalAttack: "技巧", specialAttacks: "[異常化]: 速度" },
-      { name: "血橙獸", nameEN: "Blood Orange Bishaten", nameJP: "ビシュテンゴ亜種", species: "牙獸種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
+      { name: "緋天狗獸", nameEN: "Blood Orange Bishaten", nameJP: "ビシュテンゴ亜種", species: "牙獸種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "雪獅子王", nameEN: "Blangonga", nameJP: "ドドブランゴ", species: "牙獸種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
       { name: "雪鬼獸", nameEN: "Goss Harag", nameJP: "ゴシャハギ", species: "牙獸種", normalAttack: "力量", specialAttacks: "[冰棍]: 技巧 / [冰刃]: 速度" },
       { name: "赫猿獸", nameEN: "Ajarakan", nameJP: "アジャラカン", species: "牙獸種", normalAttack: "技巧", specialAttacks: "[憤怒]: 力量" },
