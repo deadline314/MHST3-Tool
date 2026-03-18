@@ -220,7 +220,7 @@ const DATA: Record<string, FormData[]> = {
   ],
   "Afflicted Chatacabra": [
     f("通常", [c("頭部"), p("軀幹"), b("本體")]),
-    f("鑛物纏", [c("頭部"), p("軀幹"), b("右腕 / 左腕")]),
+    f("鑛物纏繞", [c("頭部"), p("軀幹"), b("右腕 / 左腕")]),
   ],
   "Afflicted Tetranadon": [
     f("通常", [c("尾巴"), p("頭部"), b("腳部")]),

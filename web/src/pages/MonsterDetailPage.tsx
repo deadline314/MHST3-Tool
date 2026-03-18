@@ -10,6 +10,7 @@ import { geneToZH } from "../data/geneTranslations";
 import { getBingoBonus } from "../data/bingoBonus";
 import { getDamageEffectiveness } from "../data/damageEffectiveness";
 import { getStatusEffectiveness, STATUS_LABELS } from "../data/statusEffectiveness";
+import { getInvasiveBeast, getInvasiveEvolution, getInvasiveByUnlock, getEvolutionByUnlock, getMutationsFrom, getMutationTo, getTemperedElderInfo } from "../data/invasive";
 import type { StatusLevel } from "../data/statusEffectiveness";
 import { ATTACK_TYPE_COLORS, ELEMENT_COLORS, RESIST_LEVEL_COLORS } from "../types/monster";
 import type { ResistLevel } from "../types/monster";
@@ -72,6 +73,13 @@ export function MonsterDetailPage() {
   const bingoBonus = getBingoBonus(monster.nameEN);
   const damageEff = getDamageEffectiveness(monster.nameEN);
   const statusEff = getStatusEffectiveness(monster.nameEN);
+  const invasiveBeast = getInvasiveBeast(monster.name);
+  const invasiveEvo = getInvasiveEvolution(monster.name);
+  const invasiveByUnlock = getInvasiveByUnlock(monster.name);
+  const evoByUnlock = getEvolutionByUnlock(monster.name);
+  const mutationsFrom = getMutationsFrom(monster.name);
+  const mutationTo = getMutationTo(monster.name);
+  const temperedInfo = getTemperedElderInfo(monster.name);
   const borderColor = ATTACK_TYPE_COLORS[monster.normalAttack] || ATTACK_TYPE_COLORS["-"];
 
   const RIDE_LABELS = [
@@ -238,6 +246,172 @@ export function MonsterDetailPage() {
                 </table>
               </div>
             )}
+          </section>
+        )}
+
+        {invasiveBeast && (
+          <section className="detail-section">
+            <h2 className="section-title">侵獸攻略</h2>
+            <div className="invasive-info">
+              <div className="invasive-detail-grid">
+                <div className="invasive-row">
+                  <span className="invasive-label">出現地區</span>
+                  <span className="invasive-value">{invasiveBeast.region}</span>
+                </div>
+                <div className="invasive-row">
+                  <span className="invasive-label">出現地點</span>
+                  <span className="invasive-value">{invasiveBeast.location}</span>
+                </div>
+                {invasiveBeast.requirement !== "-" && (
+                  <div className="invasive-row">
+                    <span className="invasive-label">需求裝備</span>
+                    <span className="invasive-value invasive-requirement">{invasiveBeast.requirement}</span>
+                  </div>
+                )}
+                {invasiveBeast.method !== "-" && (
+                  <div className="invasive-row">
+                    <span className="invasive-label">攻略方式</span>
+                    <span className="invasive-value invasive-method">{invasiveBeast.method}</span>
+                  </div>
+                )}
+                <div className="invasive-row">
+                  <span className="invasive-label">解鎖危惧種</span>
+                  <span className="invasive-value">
+                    {invasiveBeast.unlocksMonster}
+                    <span className="invasive-sub">{invasiveBeast.unlocksMonsterJP}</span>
+                  </span>
+                </div>
+              </div>
+              {invasiveEvo && (invasiveEvo.subSpecies !== "-" || invasiveEvo.deviant !== "-") && (
+                <div className="invasive-evolution">
+                  <h3 className="invasive-evo-title">可派生突變物種</h3>
+                  <div className="evo-chain">
+                    {invasiveEvo.subSpecies !== "-" && (
+                      <div className="evo-card">
+                        <div className="evo-card-type">亞種</div>
+                        <div className="evo-card-name">{invasiveEvo.subSpecies}</div>
+                        <div className="evo-card-condition">{invasiveEvo.subSpeciesCondition}</div>
+                      </div>
+                    )}
+                    {invasiveEvo.deviant !== "-" && (
+                      <div className="evo-card evo-card-deviant">
+                        <div className="evo-card-type">二名</div>
+                        <div className="evo-card-name">{invasiveEvo.deviant}</div>
+                        <div className="evo-card-condition">{invasiveEvo.deviantCondition}</div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {invasiveByUnlock && (
+          <section className="detail-section">
+            <h2 className="section-title">侵獸來源</h2>
+            <div className="invasive-info">
+              <div className="invasive-detail-grid">
+                <div className="invasive-row">
+                  <span className="invasive-label">來源侵獸</span>
+                  <span className="invasive-value">{invasiveByUnlock.invasive}</span>
+                </div>
+                <div className="invasive-row">
+                  <span className="invasive-label">出現地區</span>
+                  <span className="invasive-value">{invasiveByUnlock.region}</span>
+                </div>
+              </div>
+              {evoByUnlock && (evoByUnlock.subSpecies !== "-" || evoByUnlock.deviant !== "-") && (
+                <div className="invasive-evolution">
+                  <h3 className="invasive-evo-title">可派生突變物種</h3>
+                  <div className="evo-chain">
+                    {evoByUnlock.subSpecies !== "-" && (
+                      <div className="evo-card">
+                        <div className="evo-card-type">亞種</div>
+                        <div className="evo-card-name">{evoByUnlock.subSpecies}</div>
+                        <div className="evo-card-condition">{evoByUnlock.subSpeciesCondition}</div>
+                      </div>
+                    )}
+                    {evoByUnlock.deviant !== "-" && (
+                      <div className="evo-card evo-card-deviant">
+                        <div className="evo-card-type">二名</div>
+                        <div className="evo-card-name">{evoByUnlock.deviant}</div>
+                        <div className="evo-card-condition">{evoByUnlock.deviantCondition}</div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {(mutationsFrom.length > 0 || mutationTo) && (
+          <section className="detail-section">
+            <h2 className="section-title">突然變異</h2>
+            <div className="mutation-info">
+              {mutationTo && (
+                <div className="mutation-block">
+                  <div className="mutation-header">變異來源</div>
+                  <div className="mutation-detail-grid">
+                    <div className="mutation-row">
+                      <span className="mutation-label">變異元</span>
+                      <span className="mutation-value">{mutationTo.source}</span>
+                    </div>
+                    <div className="mutation-row">
+                      <span className="mutation-label">變異條件</span>
+                      <span className="mutation-value mutation-condition">{mutationTo.condition}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {mutationsFrom.length > 0 && (
+                <div className="mutation-block">
+                  <div className="mutation-header">可變異為</div>
+                  <div className="mutation-targets">
+                    {mutationsFrom.map((m) => (
+                      <div key={m.result} className="mutation-target-card">
+                        <div className="mutation-target-name">{m.result}</div>
+                        <div className="mutation-target-jp">{m.resultJP}</div>
+                        <div className="mutation-target-condition">{m.condition}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {temperedInfo && (
+          <section className="detail-section">
+            <h2 className="section-title">天變古龍攻略</h2>
+            <div className="invasive-info">
+              <div className="invasive-detail-grid">
+                <div className="invasive-row">
+                  <span className="invasive-label">出現地區</span>
+                  <span className="invasive-value">{temperedInfo.region}</span>
+                </div>
+                <div className="invasive-row">
+                  <span className="invasive-label">出現地點</span>
+                  <span className="invasive-value">{temperedInfo.location}</span>
+                </div>
+                <div className="invasive-row">
+                  <span className="invasive-label">攻擊屬性</span>
+                  <span className="invasive-value" style={{ color: ELEMENT_COLORS[temperedInfo.element] || "var(--text-primary)" }}>
+                    {temperedInfo.element}
+                  </span>
+                </div>
+                <div className="invasive-row">
+                  <span className="invasive-label">可獲得</span>
+                  <span className="invasive-value">{temperedInfo.obtainable ? "✓ 可孵蛋" : "✗ 無法取得"}</span>
+                </div>
+                <div className="invasive-row">
+                  <span className="invasive-label">攻略要點</span>
+                  <span className="invasive-value invasive-method">{temperedInfo.strategy}</span>
+                </div>
+              </div>
+            </div>
           </section>
         )}
 

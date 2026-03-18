@@ -103,10 +103,12 @@ export const CATEGORY_LIST = [
   "一般魔物",
   "天變古龍",
   "兇異魔物",
+  "侵獸",
+  "突然變異",
   "特殊（劇情 / Exotic / Honed）",
 ] as const;
 
-const GROUP_CATEGORIES = new Set(["天變古龍", "兇異魔物", "特殊（劇情 / Exotic / Honed）"]);
+const GROUP_CATEGORIES = new Set(["天變古龍", "兇異魔物", "侵獸", "特殊（劇情 / Exotic / Honed）"]);
 
 export function categoryToGroup(category: string): string {
   return GROUP_CATEGORIES.has(category) ? category : "一般魔物";

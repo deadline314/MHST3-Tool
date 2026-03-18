@@ -3,6 +3,7 @@ import { MONSTERS } from "../data/monsters";
 import { matchSearch } from "../utils/search";
 import { monsterMatchesLocation, getMonsterLocationParts } from "../data/locations";
 import { getRideAction } from "../data/rideActions";
+import { isMutationResult, isMutationSource } from "../data/invasive";
 import type { AttackType, Monster } from "../types/monster";
 
 export type SortOption = "default" | "name" | "nameEN" | "species" | "location";
@@ -61,13 +62,24 @@ function sortMonsters(monsters: Monster[], sort: SortOption): Monster[] {
   }
 }
 
+function matchesCategory(m: Monster, categories: Set<string>): boolean {
+  for (const cat of categories) {
+    if (cat === "突然變異") {
+      if (isMutationResult(m.name) || isMutationSource(m.name)) return true;
+    } else {
+      if (m.group === cat) return true;
+    }
+  }
+  return false;
+}
+
 export function useFilteredMonsters(filters: Filters): Monster[] {
   return useMemo(() => {
     const filtered = MONSTERS.filter((m) => {
       if (!matchSearch(filters.search, m.name, m.nameEN, m.nameJP)) return false;
       if (filters.species.size > 0 && !filters.species.has(m.species)) return false;
       if (filters.attackTypes.size > 0 && !filters.attackTypes.has(m.normalAttack)) return false;
-      if (filters.categories.size > 0 && !filters.categories.has(m.group)) return false;
+      if (filters.categories.size > 0 && !matchesCategory(m, filters.categories)) return false;
       if (filters.locations.size > 0 && !monsterMatchesLocation(m.nameEN, filters.locations)) return false;
       if (filters.rideAbilities.size > 0 || filters.rideElements.size > 0) {
         const ride = getRideAction(m.nameEN);
