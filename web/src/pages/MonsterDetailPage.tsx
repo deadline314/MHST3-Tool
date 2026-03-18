@@ -164,7 +164,7 @@ export function MonsterDetailPage() {
             <h2 className="section-title">屬性弱點</h2>
             <div className="weakness-grid">
               {([
-                ["無屬性", "neutral", weakness.neutral],
+                ["無", "neutral", weakness.neutral],
                 ["火", "fire", weakness.fire],
                 ["水", "water", weakness.water],
                 ["雷", "thunder", weakness.thunder],
