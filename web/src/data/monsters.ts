@@ -197,7 +197,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     category: "蟲蛛種",
     monsters: [
       { name: "影蜘蛛", nameEN: "Nerscylla", nameJP: "ネルスキュラ", species: "蟲蛛種", normalAttack: "技巧", specialAttacks: "[異常化]: 速度" },
-      { name: "暗影蜘蛛", nameEN: "Shrouded Nerscylla", nameJP: "ネルスキュラ亜種", species: "蟲蛛種", normalAttack: "技巧", specialAttacks: "[異常化]: 速度" },
+      { name: "骸蜘蛛", nameEN: "Shrouded Nerscylla", nameJP: "ネルスキュラ亜種", species: "蟲蛛種", normalAttack: "技巧", specialAttacks: "[異常化]: 速度" },
       { name: "妃蜘蛛", nameEN: "Rakna-Kadaki", nameJP: "ヤツカダキ", species: "蟲蛛種", normalAttack: "技巧", specialAttacks: "[蓄絲]: 技巧 / [異常化]: 速度" },
       { name: "蛛蟲", nameEN: "Rachnoid", nameJP: "ツケヒバキ", species: "蟲蛛種", normalAttack: "技巧", specialAttacks: "-" },
     ],
@@ -212,7 +212,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
   {
     category: "飛龍種",
     monsters: [
-      { name: "浮空龍", nameEN: "Paolumu", nameJP: "パオウルムー", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[飛行]: 速度" },
+      { name: "浮空龍", nameEN: "Paolumu", nameJP: "パオウルムー", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[滯空]: 速度" },
       { name: "雌火龍", nameEN: "Rathian", nameJP: "リオレイア", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "櫻火龍", nameEN: "Pink Rathian", nameJP: "リオレイア亜種", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "紫毒姬火龍", nameEN: "Dreadqueen Rathian", nameJP: "紫毒姫リオレイア", species: "飛龍種", normalAttack: "速度", specialAttacks: "-" },
