@@ -145,7 +145,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "飛雷龍", nameEN: "Tobi-Kadachi", nameJP: "トビカガチ", species: "牙龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧" },
       { name: "慘爪龍", nameEN: "Odogaron", nameJP: "オドガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 速度 / [暴走]: 力量" },
       { name: "兇爪龍", nameEN: "Ebony Odogaron", nameJP: "オドガロン亜種", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 速度 / [暴走]: 力量" },
-      { name: "怨虎龍", nameEN: "Magnamalo", nameJP: "マガイマガド", species: "牙龍種", normalAttack: "速度", specialAttacks: "[鬼火]: 力量 / [鬼火纏身]: 技巧" },
+      { name: "怨虎龍", nameEN: "Magnamalo", nameJP: "マガイマガド", species: "牙龍種", normalAttack: "速度", specialAttacks: "[鬼火臨界]: 技巧 / [鬼火纏身]: 力量" },
     ],
   },
   {
