@@ -218,7 +218,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "紫毒姬火龍", nameEN: "Dreadqueen Rathian", nameJP: "紫毒姫リオレイア", species: "飛龍種", normalAttack: "速度", specialAttacks: "-" },
       { name: "火龍", nameEN: "Rathalos", nameJP: "リオレウス", species: "飛龍種", normalAttack: "力量", specialAttacks: "[異常化]: 技巧 / [飛行]: 速度" },
       { name: "蒼火龍", nameEN: "Azure Rathalos", nameJP: "リオレウス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "[異常化]: 技巧" },
-      { name: "黑炎王火龍", nameEN: "Dreadking Rathalos", nameJP: "黒炎王リオレウス", species: "飛龍種", normalAttack: "力量", specialAttacks: "-" },
+      { name: "黑炎王火龍", nameEN: "Dreadking Rathalos", nameJP: "黒炎王リオレウス", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 技巧" },
       { name: "冰牙龍", nameEN: "Barioth", nameJP: "ベリオロス", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
       { name: "砂冰牙龍", nameEN: "Sand Barioth", nameJP: "ベリオロス亜種", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
       { name: "迅龍", nameEN: "Nargacuga", nameJP: "ナルガクルガ", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 技巧" },
