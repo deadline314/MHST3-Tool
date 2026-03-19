@@ -1,9 +1,10 @@
 import { useState, useMemo, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { getUniqueGenes, getMonstersWithGene, getGenes } from "../data/genes";
+import { getUniqueGenes, getGenes } from "../data/genes";
 import { MONSTERS } from "../data/monsters";
 import { matchSearch } from "../utils/search";
 import { geneToZH } from "../data/geneTranslations";
+import { GeneDetailModal } from "../components/GeneDetailModal";
 
 const GRID_SIZE = 9;
 
@@ -15,7 +16,7 @@ export function GenePlannerPage() {
   const [slots, setSlots] = useState<GeneSlot[]>(Array.from({ length: GRID_SIZE }, () => ({ gene: null })));
   const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
   const [geneSearch, setGeneSearch] = useState("");
-  const [selectedGeneInfo, setSelectedGeneInfo] = useState<string | null>(null);
+  const [geneModalGene, setGeneModalGene] = useState<string | null>(null);
   const [monsterSearch, setMonsterSearch] = useState("");
 
   const allGenes = useMemo(() => getUniqueGenes(), []);
@@ -50,13 +51,6 @@ export function GenePlannerPage() {
   const usedGenes = useMemo(() => {
     return new Set(slots.filter((s) => s.gene).map((s) => s.gene!));
   }, [slots]);
-
-  const monstersForGeneInfo = useMemo(() => {
-    if (!selectedGeneInfo) return [];
-    return getMonstersWithGene(selectedGeneInfo).map((enName) => {
-      return MONSTERS.find((m) => m.nameEN === enName);
-    }).filter(Boolean);
-  }, [selectedGeneInfo]);
 
   const filteredMonsters = useMemo(() => {
     return MONSTERS.filter((m) => {
@@ -130,39 +124,23 @@ export function GenePlannerPage() {
           <h2 className="section-title">基因查詢</h2>
           <p className="gene-info-hint">
             {usedGenes.size > 0
-              ? "已篩選為九宮格上的基因，點選查看擁有該基因的魔物"
-              : "點選基因名稱來查看擁有該基因的魔物"}
+              ? "已篩選為九宮格上的基因，點選查看基因詳細資訊與擁有該基因的魔物"
+              : "點選基因名稱查看詳細資訊（類型、屬性、效果等）與擁有該基因的魔物"}
           </p>
           <div className="gene-all-list">
             {(usedGenes.size > 0 ? allGenes.filter((g) => usedGenes.has(g)) : allGenes).map((gene) => (
               <button
                 key={gene}
-                className={`gene-chip ${selectedGeneInfo === gene ? "expanded" : ""}`}
-                onClick={() => setSelectedGeneInfo(selectedGeneInfo === gene ? null : gene)}
+                className={`gene-chip ${geneModalGene === gene ? "expanded" : ""}`}
+                onClick={() => setGeneModalGene(gene)}
               >
                 <span className="gene-chip-zh">{geneToZH(gene)}</span>
               </button>
             ))}
           </div>
 
-          {selectedGeneInfo && (
-            <div className="gene-detail-panel">
-              <h3 className="gene-detail-title">
-                <span className="gene-title-zh">{geneToZH(selectedGeneInfo)}</span>
-                <span className="gene-title-jp">{selectedGeneInfo}</span>
-              </h3>
-              <p className="gene-detail-subtitle">擁有此基因的魔物：</p>
-              <div className="gene-monster-grid">
-                {monstersForGeneInfo.map((m) =>
-                  m ? (
-                    <Link key={m.id} to={`/monsters/${m.id}`} className="gene-monster-card">
-                      <img src={m.icon} alt={m.name} className="gene-monster-icon" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
-                      <span>{m.name}</span>
-                    </Link>
-                  ) : null
-                )}
-              </div>
-            </div>
+          {geneModalGene && (
+            <GeneDetailModal gene={geneModalGene} onClose={() => setGeneModalGene(null)} />
           )}
 
           <h2 className="section-title" style={{ marginTop: 24 }}>魔物基因一覽</h2>
@@ -186,7 +164,7 @@ export function GenePlannerPage() {
                       <button
                         key={g}
                         className="gene-chip-sm"
-                        onClick={() => setSelectedGeneInfo(g)}
+                        onClick={() => setGeneModalGene(g)}
                       >
                         {geneToZH(g)}
                       </button>

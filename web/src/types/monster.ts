@@ -87,10 +87,15 @@ export const ELEMENT_COLORS: Record<string, string> = {
   無: "#95a5a6",
   無屬性: "#95a5a6",
   火: "#e74c3c",
+  火屬性: "#e74c3c",
   水: "#3498db",
+  水屬性: "#3498db",
   雷: "#f1c40f",
+  雷屬性: "#f1c40f",
   氷: "#74b9ff",
+  氷屬性: "#74b9ff",
   龍: "#a855f7",
+  龍屬性: "#a855f7",
 };
 
 export const RESIST_LEVEL_COLORS: Record<ResistLevel, string> = {

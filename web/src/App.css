@@ -687,6 +687,86 @@ a { color: inherit; text-decoration: none; }
 .inline-monster-link:hover {
   color: #7bb8ff; text-decoration: underline;
 }
+
+/* Gene Detail Modal */
+.gene-modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; animation: geneModalFadeIn 0.2s ease;
+}
+@keyframes geneModalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+.gene-modal {
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); max-width: 440px; width: 100%;
+  max-height: 85vh; overflow-y: auto; position: relative;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(99, 102, 241, 0.08);
+}
+.gene-modal-close {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-muted); font-size: 1rem; cursor: pointer;
+  width: 28px; height: 28px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition-fast);
+}
+.gene-modal-close:hover { color: var(--text-primary); border-color: var(--border-hover); background: var(--bg-card-hover); }
+.gene-modal-header {
+  padding: 20px 48px 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.06) 0%, transparent 100%);
+}
+.gene-modal-title {
+  font-size: 1.1rem; font-weight: 600; color: var(--accent);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.gene-modal-zh { font-size: 1.2rem; letter-spacing: 0.02em; }
+.gene-modal-jp { font-size: 0.78rem; color: var(--text-muted); font-weight: 400; font-style: italic; }
+.gene-modal-body { padding: 18px 20px 20px; }
+.gene-detail-badges {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;
+}
+.gene-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px; font-size: 0.78rem; font-weight: 500;
+  border-radius: 999px; border: 1px solid transparent;
+}
+.gene-badge-type, .gene-badge-element { border-color: currentColor; opacity: 0.9; }
+.gene-badge-skill, .gene-badge-target {
+  background: var(--bg-card); color: var(--text-secondary);
+  border-color: var(--border);
+}
+.gene-detail-stats {
+  display: flex; flex-wrap: wrap; gap: 12px 20px;
+  padding: 12px 14px; background: var(--bg-card);
+  border-radius: var(--radius-md); margin-bottom: 14px;
+  border: 1px solid var(--border);
+}
+.gene-stat {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.gene-stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.gene-stat-value { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+.gene-detail-effect-card {
+  padding: 14px; background: var(--bg-card);
+  border-radius: var(--radius-md); margin-bottom: 18px;
+  border-left: 3px solid var(--accent);
+}
+.gene-effect-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; display: block; }
+.gene-effect-text { font-size: 0.9rem; color: var(--text-primary); line-height: 1.6; margin: 0; }
+.gene-modal-no-detail { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; padding: 12px; background: var(--bg-card); border-radius: var(--radius-md); }
+.gene-modal-subtitle { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px; }
+.gene-modal-monster-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.gene-modal-monster-card {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+  font-size: 0.84rem; color: var(--text-primary);
+  transition: all var(--transition-fast); text-decoration: none;
+}
+.gene-modal-monster-card:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.gene-modal-monster-icon { width: 32px; height: 32px; object-fit: contain; border-radius: 4px; }
+
 .mutation-target-jp {
   font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;
 }

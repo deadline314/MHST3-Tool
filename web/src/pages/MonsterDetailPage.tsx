@@ -5,8 +5,8 @@ import { getWeakness } from "../data/weakness";
 import { getRideAction } from "../data/rideActions";
 import { getLocation } from "../data/locations";
 import { getGenes } from "../data/genes";
-import { getMonstersWithGene } from "../data/genes";
 import { geneToZH } from "../data/geneTranslations";
+import { GeneDetailModal } from "../components/GeneDetailModal";
 import { getBingoBonus } from "../data/bingoBonus";
 import { getDamageEffectiveness } from "../data/damageEffectiveness";
 import { getStatusEffectiveness, STATUS_LABELS } from "../data/statusEffectiveness";
@@ -52,7 +52,7 @@ export function MonsterDetailPage() {
   const { monsterId } = useParams<{ monsterId: string }>();
   const navigate = useNavigate();
   const [imgError, setImgError] = useState(false);
-  const [expandedGene, setExpandedGene] = useState<string | null>(null);
+  const [geneModalGene, setGeneModalGene] = useState<string | null>(null);
   const [activeForm, setActiveForm] = useState(0);
 
   const monster = MONSTERS.find((m) => m.id === monsterId);
@@ -492,31 +492,19 @@ export function MonsterDetailPage() {
           ) : (
             <div className="genes-list">
               {genes.map((gene) => (
-                <div key={gene} className="gene-item-wrapper">
-                  <button
-                    className={`gene-chip ${expandedGene === gene ? "expanded" : ""}`}
-                    onClick={() => setExpandedGene(expandedGene === gene ? null : gene)}
-                  >
-                    <span className="gene-chip-zh">{geneToZH(gene)}</span>
-                    <span className="gene-chip-jp">{gene}</span>
-                  </button>
-                  {expandedGene === gene && (
-                    <div className="gene-monsters-dropdown">
-                      <p className="gene-monsters-title">擁有此基因的魔物：</p>
-                      {getMonstersWithGene(gene).map((enName) => {
-                        const m = MONSTERS.find((mon) => mon.nameEN === enName);
-                        if (!m) return <span key={enName}>{enName}</span>;
-                        return (
-                          <Link key={m.id} to={`/monsters/${m.id}`} className="gene-monster-link">
-                            {m.name}
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
+                <button
+                  key={gene}
+                  className={`gene-chip ${geneModalGene === gene ? "expanded" : ""}`}
+                  onClick={() => setGeneModalGene(gene)}
+                >
+                  <span className="gene-chip-zh">{geneToZH(gene)}</span>
+                  <span className="gene-chip-jp">{gene}</span>
+                </button>
               ))}
             </div>
+          )}
+          {geneModalGene && (
+            <GeneDetailModal gene={geneModalGene} onClose={() => setGeneModalGene(null)} />
           )}
         </section>
 
