@@ -117,7 +117,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
   {
     category: "兩棲種",
     monsters: [
-      { name: "纏蛙", nameEN: "Chatacabra", nameJP: "チャタカブラ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[膨脹]: 技巧" },
+      { name: "纏蛙", nameEN: "Chatacabra", nameJP: "チャタカブラ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[礦物纏身]: 技巧" },
       { name: "河童蛙", nameEN: "Tetranadon", nameJP: "ヨツミワドウ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[膨脹]: 技巧" },
     ],
   },
@@ -132,7 +132,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "赫猿獸", nameEN: "Ajarakan", nameJP: "アジャラカン", species: "牙獸種", normalAttack: "技巧", specialAttacks: "[憤怒]: 力量" },
       { name: "加爾克", nameEN: "Canyne", nameJP: "ガルク", species: "牙獸種", normalAttack: "速度", specialAttacks: "-" },
       { name: "雪獅子", nameEN: "Blango", nameJP: "ブランゴ", species: "牙獸種", normalAttack: "力量", specialAttacks: "-" },
-      { name: "剛纏獸", nameEN: "Garangolm", nameJP: "ガランゴルム", species: "牙獸種", normalAttack: "力量", specialAttacks: "[熔岩纏繞]: 速度 / [青苔纏繞]: 技巧" },
+      { name: "剛纏獸", nameEN: "Garangolm", nameJP: "ガランゴルム", species: "牙獸種", normalAttack: "力量", specialAttacks: "[熔岩纏身]: 速度 / [青苔纏身]: 技巧" },
     ],
   },
   {
@@ -298,7 +298,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
   {
     category: "兇異魔物",
     monsters: [
-      { name: "兇異纏蛙", nameEN: "Feral Chatacabra", nameJP: "凶異チャタカブラ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[鑛物纏繞]: 技巧" },
+      { name: "兇異纏蛙", nameEN: "Feral Chatacabra", nameJP: "凶異チャタカブラ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[鑛物纏身]: 技巧" },
       { name: "兇異浮空龍", nameEN: "Feral Paolumu", nameJP: "凶異パオウルムー", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[飛行]: 速度" },
       { name: "兇異迅猛龍王", nameEN: "Feral Velocidrome", nameJP: "凶異ドスランポス", species: "鳥龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "兇異毒怪鳥", nameEN: "Feral Gypceros", nameJP: "凶異ゲリョス", species: "鳥龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 技巧" },
