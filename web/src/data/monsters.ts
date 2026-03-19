@@ -118,7 +118,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     category: "兩棲種",
     monsters: [
       { name: "纏蛙", nameEN: "Chatacabra", nameJP: "チャタカブラ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[礦物纏身]: 技巧" },
-      { name: "河童蛙", nameEN: "Tetranadon", nameJP: "ヨツミワドウ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[膨脹]: 技巧" },
+      { name: "河童蛙", nameEN: "Tetranadon", nameJP: "ヨツミワドウ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[吃撐]: 技巧" },
     ],
   },
   {
@@ -309,7 +309,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "兇異影蜘蛛", nameEN: "Feral Nerscylla", nameJP: "凶異ネルスキュラ", species: "蟲蛛種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
       { name: "兇異碎龍", nameEN: "Feral Brachydios", nameJP: "凶異ブラキディオス", species: "獸龍種", normalAttack: "力量", specialAttacks: "[黏菌活化]: 速度 / [憤怒]: 力量" },
       { name: "兇異天狗獸", nameEN: "Feral Bishaten", nameJP: "凶異ビシュテンゴ", species: "牙獸種", normalAttack: "技巧", specialAttacks: "[尾巴站立]: 速度" },
-      { name: "兇異河童蛙", nameEN: "Feral Tetranadon", nameJP: "凶異ヨツミワドウ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[膨脹]: 技巧" },
+      { name: "兇異河童蛙", nameEN: "Feral Tetranadon", nameJP: "凶異ヨツミワドウ", species: "兩棲種", normalAttack: "力量", specialAttacks: "[吃撐]: 技巧" },
       { name: "兇異棘龍", nameEN: "Feral Espinas", nameJP: "凶異エスピナス", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [暴走]: 力量" },
       { name: "兇異飛雷龍", nameEN: "Feral Tobi-Kadachi", nameJP: "凶異トビカガチ", species: "牙龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧" },
       { name: "兇異土砂龍", nameEN: "Feral Barroth", nameJP: "凶異ボルボロス", species: "獸龍種", normalAttack: "速度", specialAttacks: "[泥鎧]: 技巧" },
