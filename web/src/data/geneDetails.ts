@@ -466,7 +466,6 @@ const GENE_DETAILS: Record<string, GeneDetail> = {
   "ライデングルマ": { type: "速度", element: "雷屬性", skillType: "主動", target: "敵全體", stCost: 20, power: 70, dragonBreak: "40(50)", effect: "對敵全體造成雷屬性傷害。", learnLv: 20 },
   "雷迅掌": { type: "速度", element: "雷屬性", skillType: "主動", target: "敵單體", stCost: 30, power: 100, dragonBreak: 10, effect: "對敵單體造成雷屬性傷害。", learnLv: 40 },
   "エレキブレス": { type: "力量", element: "雷屬性", skillType: "主動", target: "敵單體", stCost: 15, power: 70, dragonBreak: 30, effect: "對敵單體造成雷屬性傷害，機率賦予麻痺。" },
-  "カイザーブレード": { type: "技巧", element: "無屬性", skillType: "主動", target: "敵單體", stCost: 30, power: 90, dragonBreak: 30, effect: "對敵單體造成無屬性傷害。" },
   "ブレードチャージ": { type: "無", element: "龍屬性", skillType: "主動", target: "自身", stCost: 25, power: "-", dragonBreak: "-", effect: "自身賦予龍屬性攻撃力與破龍力上升。" },
   "ダークロード": { type: "無", element: "龍屬性", skillType: "主動", target: "自身", stCost: 20, power: "-", dragonBreak: "-", effect: "自身賦予血氣。", learnLv: 40 },
   "斬熱刃": { type: "速度", element: "火屬性", skillType: "主動", target: "敵全體", stCost: 35, power: 100, dragonBreak: 30, effect: "對敵全體造成火屬性傷害，機率賦予灼傷。", learnLv: 50 },
