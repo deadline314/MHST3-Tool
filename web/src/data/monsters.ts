@@ -132,6 +132,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "赫猿獸", nameEN: "Ajarakan", nameJP: "アジャラカン", species: "牙獸種", normalAttack: "技巧", specialAttacks: "[憤怒]: 力量" },
       { name: "加爾克", nameEN: "Canyne", nameJP: "ガルク", species: "牙獸種", normalAttack: "速度", specialAttacks: "-" },
       { name: "雪獅子", nameEN: "Blango", nameJP: "ブランゴ", species: "牙獸種", normalAttack: "力量", specialAttacks: "-" },
+      { name: "剛纏獸", nameEN: "Garangolm", nameJP: "ガランゴルム", species: "牙獸種", normalAttack: "力量", specialAttacks: "[屬性化]: 速度 / [憤怒]: 技巧" },
     ],
   },
   {
@@ -152,7 +153,6 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     monsters: [
       { name: "土砂龍", nameEN: "Barroth", nameJP: "ボルボロス", species: "獸龍種", normalAttack: "速度", specialAttacks: "[泥鎧]: 技巧" },
       { name: "冰碎龍", nameEN: "Jade Barroth", nameJP: "ボルボロス亜種", species: "獸龍種", normalAttack: "力量", specialAttacks: "[冰鎧]: 技巧 / [憤怒]: 速度" },
-      { name: "爆鎚龍", nameEN: "Garangolm", nameJP: "ガランゴルム", species: "獸龍種", normalAttack: "力量", specialAttacks: "[屬性化]: 速度 / [憤怒]: 技巧" },
       { name: "角龍", nameEN: "Diablos", nameJP: "ディアブロス", species: "獸龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
       { name: "黑角龍", nameEN: "Black Diablos", nameJP: "ディアブロス亜種", species: "獸龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
       { name: "鏖魔角龍", nameEN: "Bloodbath Diablos", nameJP: "鏖魔ディアブロス", species: "獸龍種", normalAttack: "速度", specialAttacks: "-" },
