@@ -153,9 +153,9 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     monsters: [
       { name: "土砂龍", nameEN: "Barroth", nameJP: "ボルボロス", species: "獸龍種", normalAttack: "速度", specialAttacks: "[泥鎧]: 技巧" },
       { name: "冰碎龍", nameEN: "Jade Barroth", nameJP: "ボルボロス亜種", species: "獸龍種", normalAttack: "力量", specialAttacks: "[冰鎧]: 技巧 / [憤怒]: 速度" },
-      { name: "角龍", nameEN: "Diablos", nameJP: "ディアブロス", species: "獸龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
-      { name: "黑角龍", nameEN: "Black Diablos", nameJP: "ディアブロス亜種", species: "獸龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
-      { name: "鏖魔角龍", nameEN: "Bloodbath Diablos", nameJP: "鏖魔ディアブロス", species: "獸龍種", normalAttack: "速度", specialAttacks: "-" },
+      { name: "角龍", nameEN: "Diablos", nameJP: "ディアブロス", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
+      { name: "黑角龍", nameEN: "Black Diablos", nameJP: "ディアブロス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
+      { name: "鏖魔角龍", nameEN: "Bloodbath Diablos", nameJP: "鏖魔ディアブロス", species: "飛龍種", normalAttack: "速度", specialAttacks: "-" },
       { name: "斬龍", nameEN: "Glavenus", nameJP: "ディノバルド", species: "獸龍種", normalAttack: "速度", specialAttacks: "[蓄熱]: 技巧 / [紅刃]: 力量" },
       { name: "燼滅刃斬龍", nameEN: "Hellblade Glavenus", nameJP: "燼滅刃ディノバルド", species: "獸龍種", normalAttack: "速度", specialAttacks: "-" },
       { name: "恐暴龍", nameEN: "Deviljho", nameJP: "イビルジョー", species: "獸龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [龍氣]: 力量" },
@@ -285,7 +285,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     category: "侵獸",
     monsters: [
       { name: "侵獸青熊獸", nameEN: "Invasive Arzuros", nameJP: "侵獣アオアシラ", species: "牙獸種", normalAttack: "力量", specialAttacks: "[侵化]: 技巧" },
-      { name: "侵獸角龍", nameEN: "Invasive Diablos", nameJP: "侵獣ディアブロス", species: "獸龍種", normalAttack: "力量", specialAttacks: "[侵化]: 力量" },
+      { name: "侵獸角龍", nameEN: "Invasive Diablos", nameJP: "侵獣ディアブロス", species: "飛龍種", normalAttack: "力量", specialAttacks: "[侵化]: 力量" },
       { name: "侵獸白電龍", nameEN: "Invasive Khezu", nameJP: "侵獣フルフル", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[侵化]: 力量" },
       { name: "侵獸影蜘蛛", nameEN: "Invasive Nerscylla", nameJP: "侵獣ネルスキュラ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[侵化]: 速度" },
       { name: "侵獸慘爪龍", nameEN: "Invasive Odogaron", nameJP: "侵獣オドガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[侵化]: 技巧" },
