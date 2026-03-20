@@ -350,7 +350,7 @@ export function GenePlannerPage() {
               return (
                 <div key={m.id} className="monster-gene-row">
                   <Link to={`/monsters/${m.id}`} className="monster-gene-name">
-                    <img src={m.icon} alt={m.name} className="mini-icon" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                    <img src={`${m.icon}.webp`} alt={m.name} className="mini-icon" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                     {m.name}
                   </Link>
                   <div className="monster-gene-chips">

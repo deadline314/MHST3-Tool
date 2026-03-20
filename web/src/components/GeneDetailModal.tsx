@@ -85,7 +85,7 @@ export function GeneDetailModal({ gene, onClose }: GeneDetailModalProps) {
                 {monsters.map((m) =>
                   m ? (
                     <Link key={m.id} to={`/monsters/${m.id}`} className="gene-modal-monster-card" onClick={onClose}>
-                      <img src={m.icon} alt={m.name} className="gene-modal-monster-icon" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                      <img src={`${m.icon}.webp`} alt={m.name} className="gene-modal-monster-icon" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
                       <span>{m.name}</span>
                     </Link>
                   ) : null

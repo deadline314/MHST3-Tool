@@ -27,7 +27,7 @@ export const MonsterCard = memo(function MonsterCard({ monster }: MonsterCardPro
           <div className="card-icon-fallback">{monster.name[0]}</div>
         ) : (
           <img
-            src={monster.icon}
+            src={`${monster.icon}.webp`}
             alt={monster.name}
             className="card-icon"
             loading="lazy"

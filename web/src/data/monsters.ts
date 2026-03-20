@@ -11,7 +11,7 @@ function parseSpecialAttacks(raw: string): SpecialAttack[] {
 }
 
 function nameToIconFile(nameEN: string): string {
-  return `MHST3-${nameEN.replace(/ /g, "_")}_Icon.png`;
+  return `MHST3-${nameEN.replace(/ /g, "_")}_Icon`;
 }
 
 interface RawMonster {
@@ -73,7 +73,7 @@ const ICON_OVERRIDES: Record<string, string> = {
 
 function getIconPath(nameEN: string): string {
   if (ICON_OVERRIDES[nameEN]) {
-    return `/monsters/MHST3-${ICON_OVERRIDES[nameEN]}_Icon.png`;
+    return `/monsters/MHST3-${ICON_OVERRIDES[nameEN]}_Icon`;
   }
   return `/monsters/${nameToIconFile(nameEN)}`;
 }

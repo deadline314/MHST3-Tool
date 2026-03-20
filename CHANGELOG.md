@@ -1,5 +1,40 @@
 # 更新日誌
 
+## v1.4.1（2026-03-20）
+
+這次是效能優化版本，主要把圖片全面轉成 WebP 格式大幅減少載入大小，魔物列表也改用無限捲動避免一次渲染上百張卡片，另外加上 Vercel 靜態資源快取和 robots.txt。
+
+### 效能優化
+
+**圖片格式從 PNG 轉 WebP**
+
+- 所有魔物 icon（130+ 張）新增 WebP 版本，程式碼全面改為載入 `.webp` 格式
+- 部分狀態異常 icon（目眩、屬性封印、技能封印、龍捲風、即死）也新增 WebP 版本
+- WebP 相比 PNG 檔案大小大幅縮減，頁面載入速度明顯提升
+
+**魔物列表無限捲動（Infinite Scroll）**
+
+- `MonsterGrid` 改用 `IntersectionObserver` 分批載入，初始只渲染 30 隻魔物卡片
+- 當使用者滾到列表底部才自動載入下一批（每批 30 隻），避免一次渲染全部 130+ 張卡片造成卡頓
+- 篩選條件變更時會自動重置為第一批，使用體驗不變
+
+### 部署 / 設定
+
+**Vercel 快取設定**
+
+- 新增 `vercel.json`，針對魔物 icon、狀態異常 icon、icons.svg、logo.png 設定 `Cache-Control: public, max-age=31536000, immutable`（一年快取）
+- favicon.svg 設定 30 天快取
+
+**robots.txt**
+
+- 新增 `robots.txt`，允許一般搜尋引擎爬蟲，阻擋 AI 訓練用爬蟲（GPTBot、CCBot、anthropic-ai、Google-Extended 等）
+
+### 資料修正
+
+- 刪除命名錯誤的 `MHST3-Feral_Rakna_Kadaki_Icon.png`（正確檔名為 `MHST3-Feral_Rakna-Kadaki_Icon`，Kadaki 前面是 `-` 不是 `_`）
+
+---
+
 ## v1.4.0（2026-03-19）
 
 這次更新最大的亮點是基因詳細資訊系統，點基因終於不是只看到「誰有這基因」了，現在可以直接看到技能的屬性、類型、威力、耐力消耗、效果說明等等完整資訊。另外這版也修了一大堆魔物的中文名稱跟特殊攻擊名稱，讓翻譯更貼近遊戲內的正式用語。

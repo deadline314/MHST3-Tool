@@ -112,7 +112,7 @@ export function MonsterDetailPage() {
             <div className="detail-icon-fallback">{monster.name[0]}</div>
           ) : (
             <img
-              src={monster.icon}
+              src={`${monster.icon}.webp`}
               alt={monster.name}
               className="detail-icon"
               onError={() => setImgError(true)}
@@ -515,7 +515,7 @@ export function MonsterDetailPage() {
               {relatedMonsters.map((rm) => (
                 <Link key={rm.id} to={`/monsters/${rm.id}`} className="related-monster-card">
                   <img
-                    src={rm.icon}
+                    src={`${rm.icon}.webp`}
                     alt={rm.name}
                     className="related-monster-icon"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
