@@ -102,7 +102,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "怪鳥", nameEN: "Yian Kut-Ku", nameJP: "イャンクック", species: "鳥龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
       { name: "青怪鳥", nameEN: "Blue Yian Kut-Ku", nameJP: "イャンクック亜種", species: "鳥龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
       { name: "迅猛龍王", nameEN: "Velocidrome", nameJP: "ドスランポス", species: "鳥龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
-      { name: "毒妖鳥", nameEN: "Pukei-Pukei", nameJP: "プケプケ", species: "鳥龍種", normalAttack: "技巧", specialAttacks: "[毒活性【咀嚼】]: 速度 / [毒活性【大口吞食】]: 力量" },
+      { name: "毒妖鳥", nameEN: "Pukei-Pukei", nameJP: "プケプケ", species: "鳥龍種", normalAttack: "技巧", specialAttacks: "[毒活性【用餐】]: 速度 / [毒活性【啃咬】]: 力量" },
       { name: "毒怪鳥", nameEN: "Gypceros", nameJP: "ゲリョス", species: "鳥龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 技巧" },
       { name: "紫毒鳥", nameEN: "Purple Gypceros", nameJP: "ゲリョス亜種", species: "鳥龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 技巧" },
       { name: "黑狼鳥", nameEN: "Yian Garuga", nameJP: "イャンガルルガ", species: "鳥龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 力量" },
