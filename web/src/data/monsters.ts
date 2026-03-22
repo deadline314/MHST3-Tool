@@ -175,8 +175,8 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
   {
     category: "海龍種",
     monsters: [
-      { name: "海龍", nameEN: "Lagiacrus", nameJP: "ラギアクルス", species: "海龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [帶電]: 技巧" },
-      { name: "白海龍", nameEN: "Ivory Lagiacrus", nameJP: "ラギアクルス亜種", species: "海龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量 / [帶電]: 技巧" },
+      { name: "海龍", nameEN: "Lagiacrus", nameJP: "ラギアクルス", species: "海龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [蓄電]: 技巧" },
+      { name: "白海龍", nameEN: "Ivory Lagiacrus", nameJP: "ラギアクルス亜種", species: "海龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量 / [蓄電]: 技巧" },
       { name: "泡狐龍", nameEN: "Mizutsune", nameJP: "タマミツネ", species: "海龍種", normalAttack: "技巧", specialAttacks: "[泡沫]: 速度" },
       { name: "天眼泡狐龍", nameEN: "Soulseer Mizutsune", nameJP: "天眼タマミツネ", species: "海龍種", normalAttack: "速度", specialAttacks: "-" },
       { name: "泥翁龍", nameEN: "Almudron", nameJP: "オロミドロ", species: "海龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 技巧 / [泥球]: 速度" },
@@ -289,7 +289,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "侵獸白電龍", nameEN: "Invasive Khezu", nameJP: "侵獣フルフル", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[侵化]: 力量" },
       { name: "侵獸影蜘蛛", nameEN: "Invasive Nerscylla", nameJP: "侵獣ネルスキュラ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[侵化]: 速度" },
       { name: "侵獸慘爪龍", nameEN: "Invasive Odogaron", nameJP: "侵獣オドガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[侵化]: 技巧" },
-      { name: "侵獸水龍", nameEN: "Invasive Plesioth", nameJP: "侵獣ガノトトス", species: "魚龍種", normalAttack: "速度", specialAttacks: "[侵化]: 技巧" },
+      { name: "侵獸水龍", nameEN: "Invasive Plesioth", nameJP: "侵獣ガノトトス", species: "魚龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 力量 / [侵化態]: 技巧" },
       { name: "侵獸千刃龍", nameEN: "Invasive Seregios", nameJP: "侵獣セルレギオス", species: "飛龍種", normalAttack: "速度", specialAttacks: "[侵化]: 技巧" },
       { name: "侵獸鎌蟹", nameEN: "Invasive Shogun Ceanataur", nameJP: "侵獣ショウグンギザミ", species: "甲殼種", normalAttack: "力量", specialAttacks: "[侵化]: 速度" },
       { name: "侵獸黑狼鳥", nameEN: "Invasive Yian Garuga", nameJP: "侵獣イャンガルルガ", species: "鳥龍種", normalAttack: "技巧", specialAttacks: "[侵化]: 力量" },
