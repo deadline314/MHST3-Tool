@@ -219,7 +219,6 @@ export function ArmorDetailPage() {
           <h2 className="wd-section-title">素材細節</h2>
           <div className="wd-mat-detail-grid">
             {Object.entries(detail.materialDetails).map(([category, items]) => {
-              const zhCat = translateMaterialName(category);
               return (
                 <div key={category} className="wd-mat-detail-group">
                   <div className="wd-mat-detail-cat">

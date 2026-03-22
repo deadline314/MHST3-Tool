@@ -6,7 +6,7 @@ import { WEAPON_DETAILS } from "../data/weaponDetails";
 import { toPinyin } from "../utils/search";
 import { WeaponTypeIcon } from "../components/WeaponTypeIcon";
 import { translateSkillName, translateWeaponName, translateArmorName, translateArmorSkill, translateMaterialName, findMonsterForMaterial } from "../data/weaponTranslations";
-import type { Weapon, Armor, WeaponType, WeaponDetail } from "../types/monster";
+import type { Weapon, Armor, WeaponType, WeaponDetail, StatusAilment } from "../types/monster";
 import {
   WEAPON_TYPE_LIST,
   ELEMENT_LIST,
@@ -149,8 +149,8 @@ export function EquipmentPage() {
   const [tab, setTab] = useState<EquipTab>("weapons");
   const [search, setSearch] = useState("");
   const [weaponTypes, setWeaponTypes] = useState<Set<WeaponType>>(new Set());
-  const [elements, setElements] = useState<Set<string>>(new Set());
-  const [statusFilter, setStatusFilter] = useState<Set<string>>(new Set());
+  const [elements, setElements] = useState<Set<typeof ELEMENT_LIST[number]>>(new Set());
+  const [statusFilter, setStatusFilter] = useState<Set<StatusAilment>>(new Set());
   const [sortKey, setSortKey] = useState<SortKey>("attack");
   const [sortAsc, setSortAsc] = useState(false);
   const [materialSearch, setMaterialSearch] = useState("");
@@ -169,8 +169,8 @@ export function EquipmentPage() {
     let result = WEAPONS.filter((w) => {
       if (!matchEquipSearch(search, w.name, translateWeaponName(w.name))) return false;
       if (weaponTypes.size > 0 && !weaponTypes.has(w.weaponType)) return false;
-      if (elements.size > 0 && !elements.has(w.element)) return false;
-      if (statusFilter.size > 0 && !statusFilter.has(w.statusAilment)) return false;
+      if (elements.size > 0 && !elements.has(w.element as typeof ELEMENT_LIST[number])) return false;
+      if (statusFilter.size > 0 && !statusFilter.has(w.statusAilment as StatusAilment)) return false;
       if (minSlots > 0 && totalSlots(w.slots) < minSlots) return false;
       if (materialSearch && !w.materials.some((m) => m.includes(materialSearch))) return false;
       if (skillSearch && !matchSkillSearch(skillSearch, WEAPON_DETAILS[w.name])) return false;
@@ -195,7 +195,7 @@ export function EquipmentPage() {
   const filteredArmors = useMemo(() => {
     let result = ARMORS.filter((a) => {
       if (!matchEquipSearch(search, a.name, translateArmorName(a.name))) return false;
-      if (elements.size > 0 && !elements.has(a.element)) return false;
+      if (elements.size > 0 && !elements.has(a.element as typeof ELEMENT_LIST[number])) return false;
       if (minSlots > 0 && totalSlots(a.slots) < minSlots) return false;
       if (materialSearch && !a.materials.some((m) => m.includes(materialSearch))) return false;
       return true;
