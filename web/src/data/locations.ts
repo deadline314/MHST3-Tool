@@ -129,7 +129,7 @@ const LOCATION_RAW: Record<string, MonsterLocation> = {
   "Khezu": { locations: "卡納爾塔密林：瀑隱冰窟", obtainMethod: "怪物巢穴取得蛋並孵化" },
   "Red Khezu": { locations: "卡納爾塔密林：瀑隱冰窟 / 桑提亞：冰河", obtainMethod: "怪物巢穴取得蛋並孵化" },
   "Espinas": { locations: "亞茲萊爾領域：巨樹山口（西側洞窟內）/ 塔基爾坎：天惠砂海", obtainMethod: "巨樹山口洞窟歸巢後從怪物巢穴取得蛋並孵化" },
-  "Rey Dau": { locations: "塔基爾坎：死之淵", obtainMethod: "擊破雷電龍後從怪物巢穴取得蛋並孵化" },
+  "Rey Dau": { locations: "塔基爾坎：死之淵", obtainMethod: "擊破煌雷龍後從怪物巢穴取得蛋並孵化" },
   "Arkveld": { locations: "桑提亞：聖域・舊都拉茲里恩", obtainMethod: "擊敗鎖刃龍後在怪物巢穴取得蛋並孵化" },
   "Namielle": { locations: "亞茲萊爾領域：明鏡之湖", obtainMethod: "明鏡之湖天變古流戰討伐後，在怪物巢穴取得蛋" },
   "Velkhana": { locations: "桑提亞：冰河", obtainMethod: "冰河天變古流戰討伐後，在怪物巢穴取得蛋" },
