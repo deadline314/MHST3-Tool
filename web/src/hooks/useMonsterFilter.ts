@@ -4,9 +4,13 @@ import { matchSearch } from "../utils/search";
 import { monsterMatchesLocation, getMonsterLocationParts } from "../data/locations";
 import { getRideAction } from "../data/rideActions";
 import { isMutationResult, isMutationSource } from "../data/invasive";
+import { isOtomon, getOtomonStats } from "../data/otomonStats";
+import type { OtomonStats } from "../data/otomonStats";
 import type { AttackType, Monster } from "../types/monster";
 
-export type SortOption = "default" | "name" | "nameEN" | "species" | "location";
+export type SortOption =
+  | "default" | "name" | "nameEN" | "species" | "location"
+  | "stat_hp" | "stat_attack" | "stat_crit" | "stat_speed" | "stat_defense" | "stat_stRecovery" | "stat_stInitial";
 
 export type RideAbility = "fly" | "climb" | "swim" | "jump" | "roar" | "stealth" | "melee" | "breath" | "burrow";
 
@@ -31,6 +35,7 @@ export interface Filters {
   rideAbilities: Set<RideAbility>;
   rideElements: Set<string>;
   sort: SortOption;
+  sortAsc: boolean;
 }
 
 const LOCATION_SORT_ORDER: Record<string, number> = {
@@ -47,18 +52,31 @@ function getLocationSortKey(m: Monster): number {
   return LOCATION_SORT_ORDER[region] ?? 998;
 }
 
-function sortMonsters(monsters: Monster[], sort: SortOption): Monster[] {
+function getStatValue(m: Monster, key: keyof OtomonStats): number {
+  const stats = getOtomonStats(m.nameEN);
+  return stats ? stats[key] : 0;
+}
+
+function sortMonsters(monsters: Monster[], sort: SortOption, asc: boolean): Monster[] {
   if (sort === "default") return monsters;
   const sorted = [...monsters];
+  const dir = asc ? 1 : -1;
   switch (sort) {
     case "name":
-      return sorted.sort((a, b) => a.name.localeCompare(b.name, "zh-Hant"));
+      return sorted.sort((a, b) => dir * a.name.localeCompare(b.name, "zh-Hant"));
     case "nameEN":
-      return sorted.sort((a, b) => a.nameEN.localeCompare(b.nameEN));
+      return sorted.sort((a, b) => dir * a.nameEN.localeCompare(b.nameEN));
     case "species":
-      return sorted.sort((a, b) => a.species.localeCompare(b.species, "zh-Hant") || a.name.localeCompare(b.name, "zh-Hant"));
+      return sorted.sort((a, b) => dir * (a.species.localeCompare(b.species, "zh-Hant") || a.name.localeCompare(b.name, "zh-Hant")));
     case "location":
-      return sorted.sort((a, b) => getLocationSortKey(a) - getLocationSortKey(b) || a.name.localeCompare(b.name, "zh-Hant"));
+      return sorted.sort((a, b) => dir * (getLocationSortKey(a) - getLocationSortKey(b)) || a.name.localeCompare(b.name, "zh-Hant"));
+    default: {
+      if (sort.startsWith("stat_")) {
+        const statKey = sort.slice(5) as keyof OtomonStats;
+        return sorted.sort((a, b) => dir * (getStatValue(a, statKey) - getStatValue(b, statKey)) || a.name.localeCompare(b.name, "zh-Hant"));
+      }
+      return sorted;
+    }
   }
 }
 
@@ -66,6 +84,8 @@ function matchesCategory(m: Monster, categories: Set<string>): boolean {
   for (const cat of categories) {
     if (cat === "突然變異") {
       if (isMutationResult(m.name) || isMutationSource(m.name)) return true;
+    } else if (cat === "隨行獸") {
+      if (isOtomon(m.nameEN)) return true;
     } else {
       if (m.group === cat) return true;
     }
@@ -93,6 +113,6 @@ export function useFilteredMonsters(filters: Filters): Monster[] {
       }
       return true;
     });
-    return sortMonsters(filtered, filters.sort);
+    return sortMonsters(filtered, filters.sort, filters.sortAsc);
   }, [filters]);
 }

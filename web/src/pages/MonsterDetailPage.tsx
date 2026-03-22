@@ -11,6 +11,7 @@ import { getBingoBonus } from "../data/bingoBonus";
 import { getDamageEffectiveness } from "../data/damageEffectiveness";
 import { getStatusEffectiveness, STATUS_LABELS } from "../data/statusEffectiveness";
 import { getInvasiveBeast, getInvasiveEvolution, getInvasiveByUnlock, getEvolutionByUnlock, getMutationsFrom, getMutationTo, getTemperedElderInfo } from "../data/invasive";
+import { getOtomonStats, OTOMON_STAT_LABELS } from "../data/otomonStats";
 import type { StatusLevel } from "../data/statusEffectiveness";
 import { ATTACK_TYPE_COLORS, ELEMENT_COLORS, RESIST_LEVEL_COLORS } from "../types/monster";
 import type { ResistLevel } from "../types/monster";
@@ -80,6 +81,7 @@ export function MonsterDetailPage() {
   const mutationsFrom = getMutationsFrom(monster.name);
   const mutationTo = getMutationTo(monster.name);
   const temperedInfo = getTemperedElderInfo(monster.name);
+  const otomonStats = getOtomonStats(monster.nameEN);
   const borderColor = ATTACK_TYPE_COLORS[monster.normalAttack] || ATTACK_TYPE_COLORS["-"];
 
   function monsterLink(nameZH: string) {
@@ -441,6 +443,32 @@ export function MonsterDetailPage() {
                   <RideActionBadge key={key} label={label} active={rideAction[key]} />
                 ))}
               </div>
+            </div>
+          </section>
+        )}
+
+        {otomonStats && (
+          <section className="detail-section">
+            <h2 className="section-title">能力傾向</h2>
+            <div className="otomon-stats-grid">
+              {OTOMON_STAT_LABELS.map(({ key, label }) => {
+                const val = otomonStats[key];
+                return (
+                  <div key={key} className="otomon-stat-row">
+                    <span className="otomon-stat-label">{label}</span>
+                    <div className="otomon-stat-bar-track">
+                      <div
+                        className="otomon-stat-bar-fill"
+                        style={{
+                          width: `${val * 10}%`,
+                          backgroundColor: val >= 8 ? "#e74c3c" : val >= 6 ? "#f39c12" : val >= 4 ? "#3498db" : "#95a5a6",
+                        }}
+                      />
+                    </div>
+                    <span className="otomon-stat-value">{val}</span>
+                  </div>
+                );
+              })}
             </div>
           </section>
         )}

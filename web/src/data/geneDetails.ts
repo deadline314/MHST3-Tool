@@ -499,3 +499,30 @@ export function getGeneDetail(gene: string): GeneDetail | null {
   const key = normalizeGeneKey(gene);
   return key ? GENE_DETAILS[key] : null;
 }
+
+const STATUS_EFFECT_KEYWORDS: { tag: string; patterns: string[] }[] = [
+  { tag: "毒", patterns: ["賦予毒", "賦予猛毒", "賦予劇毒", "無效化毒"] },
+  { tag: "灼傷", patterns: ["賦予灼傷", "無效化灼傷", "灼傷付與", "灼傷狀態"] },
+  { tag: "麻痺", patterns: ["賦予麻痺", "無效化麻痺", "麻痺付與", "麻痺狀態"] },
+  { tag: "睡眠", patterns: ["賦予睡眠", "無效化睡眠", "睡眠狀態"] },
+  { tag: "爆破", patterns: ["賦予爆破異常", "無效化爆破異常", "爆破異常付與", "爆破異常的敵人", "爆破異常與爆彈"] },
+  { tag: "裂傷", patterns: ["賦予裂傷", "無效化裂傷"] },
+  { tag: "目眩", patterns: ["賦予目眩", "無效化目眩"] },
+  { tag: "暈眩", patterns: ["賦予暈眩"] },
+  { tag: "即死", patterns: ["賦予即死", "無效化即死"] },
+  { tag: "技能封鎖", patterns: ["無效化技能封鎖", "技能封鎖"] },
+];
+
+export function getGeneStatusTags(gene: string): string[] {
+  const detail = getGeneDetail(gene);
+  if (!detail) return [];
+  const tags: string[] = [];
+  for (const { tag, patterns } of STATUS_EFFECT_KEYWORDS) {
+    if (patterns.some((p) => detail.effect.includes(p))) {
+      tags.push(tag);
+    }
+  }
+  return tags;
+}
+
+export const ALL_STATUS_TAGS = STATUS_EFFECT_KEYWORDS.map((s) => s.tag);

@@ -3,6 +3,9 @@ import { useState, useCallback, useEffect, createContext, useContext } from "rea
 import { MonsterListPage } from "./pages/MonsterListPage";
 import { MonsterDetailPage } from "./pages/MonsterDetailPage";
 import { GenePlannerPage } from "./pages/GenePlannerPage";
+import { EquipmentPage } from "./pages/EquipmentPage";
+import { WeaponDetailPage } from "./pages/WeaponDetailPage";
+import { ArmorDetailPage } from "./pages/ArmorDetailPage";
 import type { Filters, SortOption, RideAbility } from "./hooks/useMonsterFilter";
 import type { AttackType } from "./types/monster";
 import "./App.css";
@@ -17,6 +20,7 @@ interface FiltersContextType {
   toggleRideAbility: (ability: RideAbility) => void;
   toggleRideElement: (element: string) => void;
   setSort: (sort: SortOption) => void;
+  toggleSortDir: () => void;
   clearFilters: () => void;
   hasActiveFilters: boolean;
 }
@@ -38,6 +42,7 @@ const INITIAL_FILTERS: Filters = {
   rideAbilities: new Set(),
   rideElements: new Set(),
   sort: "default",
+  sortAsc: true,
 };
 
 function ScrollToTop() {
@@ -110,7 +115,12 @@ function App() {
   }, []);
 
   const setSort = useCallback((sort: SortOption) => {
-    setFilters((prev) => ({ ...prev, sort }));
+    const sortAsc = !sort.startsWith("stat_");
+    setFilters((prev) => ({ ...prev, sort, sortAsc }));
+  }, []);
+
+  const toggleSortDir = useCallback(() => {
+    setFilters((prev) => ({ ...prev, sortAsc: !prev.sortAsc }));
   }, []);
 
   const clearFilters = useCallback(() => {
@@ -128,7 +138,7 @@ function App() {
 
   return (
     <FiltersContext.Provider
-      value={{ filters, setSearch, toggleSpecies, toggleAttackType, toggleCategory, toggleLocation, toggleRideAbility, toggleRideElement, setSort, clearFilters, hasActiveFilters }}
+      value={{ filters, setSearch, toggleSpecies, toggleAttackType, toggleCategory, toggleLocation, toggleRideAbility, toggleRideElement, setSort, toggleSortDir, clearFilters, hasActiveFilters }}
     >
       <HashRouter>
         <ScrollToTop />
@@ -146,6 +156,9 @@ function App() {
                 <NavLink to="/gene-planner" className={({ isActive }) => `nav-tab ${isActive ? "active" : ""}`}>
                   基因規劃器
                 </NavLink>
+                <NavLink to="/equipment" className={({ isActive }) => `nav-tab ${isActive ? "active" : ""}`}>
+                  裝備檢索
+                </NavLink>
               </nav>
             </div>
           </header>
@@ -155,10 +168,14 @@ function App() {
               <Route path="/monsters" element={<MonsterListPage />} />
               <Route path="/monsters/:monsterId" element={<MonsterDetailPage />} />
               <Route path="/gene-planner" element={<GenePlannerPage />} />
+              <Route path="/equipment" element={<EquipmentPage />} />
+              <Route path="/equipment/weapon/:weaponName" element={<WeaponDetailPage />} />
+              <Route path="/equipment/armor/:armorName" element={<ArmorDetailPage />} />
             </Routes>
           </main>
           <footer className="app-footer">
             <p>MHST3 Tool — Monster Hunter Stories 3 魔物查詢工具</p>
+            <p className="app-footer-author">Created by Stanley Li</p>
             <p className="app-version">v{__APP_VERSION__}</p>
           </footer>
         </div>

@@ -4,7 +4,7 @@ import { getUniqueGenes, getGenes } from "../data/genes";
 import { MONSTERS } from "../data/monsters";
 import { matchSearch } from "../utils/search";
 import { geneToZH } from "../data/geneTranslations";
-import { getGeneDetail } from "../data/geneDetails";
+import { getGeneDetail, getGeneStatusTags, ALL_STATUS_TAGS } from "../data/geneDetails";
 import { GeneDetailModal } from "../components/GeneDetailModal";
 import { AttackTypeIcon } from "../components/AttackTypeIcon";
 import { ATTACK_TYPE_COLORS, ELEMENT_COLORS } from "../types/monster";
@@ -27,6 +27,7 @@ interface GeneFilters {
   elements: Set<string>;
   skillTypes: Set<string>;
   targets: Set<string>;
+  statusTags: Set<string>;
 }
 
 const EMPTY_GENE_FILTERS: GeneFilters = {
@@ -34,6 +35,7 @@ const EMPTY_GENE_FILTERS: GeneFilters = {
   elements: new Set(),
   skillTypes: new Set(),
   targets: new Set(),
+  statusTags: new Set(),
 };
 
 function toggleSetItem<T>(set: Set<T>, item: T): Set<T> {
@@ -52,6 +54,7 @@ export function GenePlannerPage() {
   const [geneFilters, setGeneFilters] = useState<GeneFilters>(EMPTY_GENE_FILTERS);
   const [geneFilterExpanded, setGeneFilterExpanded] = useState(false);
   const [geneQueryExpanded, setGeneQueryExpanded] = useState(false);
+  const [geneQuerySearch, setGeneQuerySearch] = useState("");
   const geneListRef = useRef<HTMLDivElement>(null);
   const [needsCollapse, setNeedsCollapse] = useState(false);
 
@@ -88,22 +91,38 @@ export function GenePlannerPage() {
     return new Set(slots.filter((s) => s.gene).map((s) => s.gene!));
   }, [slots]);
 
-  const geneFilterActiveCount = geneFilters.types.size + geneFilters.elements.size + geneFilters.skillTypes.size + geneFilters.targets.size;
+  const geneFilterActiveCount = geneFilters.types.size + geneFilters.elements.size + geneFilters.skillTypes.size + geneFilters.targets.size + geneFilters.statusTags.size;
 
   const queryGenes = useMemo(() => {
     const base = usedGenes.size > 0 ? allGenes.filter((g) => usedGenes.has(g)) : allGenes;
-    if (geneFilterActiveCount === 0) return base;
 
-    return base.filter((gene) => {
+    let filtered = base;
+    if (geneQuerySearch) {
+      const q = geneQuerySearch.toLowerCase();
+      filtered = filtered.filter((g) => {
+        if (g.toLowerCase().includes(q) || geneToZH(g).toLowerCase().includes(q)) return true;
+        const detail = getGeneDetail(g);
+        if (detail && detail.effect.toLowerCase().includes(q)) return true;
+        return false;
+      });
+    }
+
+    if (geneFilterActiveCount === 0) return filtered;
+
+    return filtered.filter((gene) => {
       const detail = getGeneDetail(gene);
       if (!detail) return geneFilterActiveCount === 0;
       if (geneFilters.types.size > 0 && !geneFilters.types.has(detail.type)) return false;
       if (geneFilters.elements.size > 0 && !geneFilters.elements.has(detail.element)) return false;
       if (geneFilters.skillTypes.size > 0 && !geneFilters.skillTypes.has(detail.skillType)) return false;
       if (geneFilters.targets.size > 0 && !(detail.target && geneFilters.targets.has(detail.target))) return false;
+      if (geneFilters.statusTags.size > 0) {
+        const tags = getGeneStatusTags(gene);
+        if (!tags.some((t) => geneFilters.statusTags.has(t))) return false;
+      }
       return true;
     });
-  }, [allGenes, usedGenes, geneFilters, geneFilterActiveCount]);
+  }, [allGenes, usedGenes, geneFilters, geneFilterActiveCount, geneQuerySearch]);
 
   useEffect(() => {
     if (!geneListRef.current) return;
@@ -271,6 +290,21 @@ export function GenePlannerPage() {
                     ))}
                   </div>
                 </div>
+
+                <div className="filter-section">
+                  <h3 className="filter-title">異常狀態</h3>
+                  <div className="filter-chips">
+                    {ALL_STATUS_TAGS.map((tag) => (
+                      <button
+                        key={tag}
+                        className={`chip status-chip ${geneFilters.statusTags.has(tag) ? "active" : ""}`}
+                        onClick={() => setGeneFilters((f) => ({ ...f, statusTags: toggleSetItem(f.statusTags, tag) }))}
+                      >
+                        {tag}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </>
             )}
 
@@ -288,6 +322,12 @@ export function GenePlannerPage() {
                 <span className="gene-query-count">{queryGenes.length}</span>
               </h2>
             </div>
+            <input
+              className="gene-search-input"
+              placeholder="搜尋基因名稱或效果..."
+              value={geneQuerySearch}
+              onChange={(e) => setGeneQuerySearch(e.target.value)}
+            />
             <p className="gene-info-hint">
               {usedGenes.size > 0
                 ? "已篩選為九宮格上的基因，點選查看詳細資訊"

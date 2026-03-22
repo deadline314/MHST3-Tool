@@ -14,6 +14,16 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "location", label: "地區" },
 ];
 
+const STAT_SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: "stat_hp", label: "生命力" },
+  { value: "stat_attack", label: "攻撃力" },
+  { value: "stat_crit", label: "會心率" },
+  { value: "stat_speed", label: "速度" },
+  { value: "stat_defense", label: "防禦力" },
+  { value: "stat_stRecovery", label: "耐力回復" },
+  { value: "stat_stInitial", label: "耐力初始" },
+];
+
 interface FilterPanelProps {
   filters: Filters;
   hasActiveFilters: boolean;
@@ -24,6 +34,7 @@ interface FilterPanelProps {
   onToggleRideAbility: (ability: RideAbility) => void;
   onToggleRideElement: (element: string) => void;
   onSortChange: (sort: SortOption) => void;
+  onToggleSortDir: () => void;
   onClear: () => void;
 }
 
@@ -39,6 +50,7 @@ export const FilterPanel = memo(function FilterPanel({
   onToggleRideAbility,
   onToggleRideElement,
   onSortChange,
+  onToggleSortDir,
   onClear,
 }: FilterPanelProps) {
   const [expanded, setExpanded] = useState(false);
@@ -62,7 +74,32 @@ export const FilterPanel = memo(function FilterPanel({
             {SORT_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>{opt.label}</option>
             ))}
+            <optgroup label="隨行獸能力傾向">
+              {STAT_SORT_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </optgroup>
           </select>
+          <button
+            className={`sort-dir-btn ${filters.sort === "default" ? "disabled" : ""}`}
+            onClick={onToggleSortDir}
+            disabled={filters.sort === "default"}
+            title={filters.sortAsc ? "遞增排序" : "遞減排序"}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              {filters.sortAsc ? (
+                <>
+                  <path d="M12 5v14" />
+                  <path d="M6 11l6-6 6 6" />
+                </>
+              ) : (
+                <>
+                  <path d="M12 5v14" />
+                  <path d="M6 13l6 6 6-6" />
+                </>
+              )}
+            </svg>
+          </button>
         </div>
         <button
           className="filter-expand-btn"

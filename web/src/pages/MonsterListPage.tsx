@@ -9,7 +9,7 @@ export function MonsterListPage() {
   const {
     filters, setSearch, toggleSpecies, toggleAttackType,
     toggleCategory, toggleLocation, toggleRideAbility, toggleRideElement,
-    setSort, clearFilters, hasActiveFilters,
+    setSort, toggleSortDir, clearFilters, hasActiveFilters,
   } = useFiltersContext();
   const filtered = useFilteredMonsters(filters);
 
@@ -27,6 +27,7 @@ export function MonsterListPage() {
           onToggleRideAbility={toggleRideAbility}
           onToggleRideElement={toggleRideElement}
           onSortChange={setSort}
+          onToggleSortDir={toggleSortDir}
           onClear={clearFilters}
         />
       </div>
