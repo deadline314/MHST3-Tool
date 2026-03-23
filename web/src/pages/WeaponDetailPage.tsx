@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { WEAPONS } from "../data/weapons";
 import { WEAPON_DETAILS } from "../data/weaponDetails";
+import { MATERIAL_SOURCES } from "../data/materialSources";
 import { WeaponTypeIcon } from "../components/WeaponTypeIcon";
 import {
   translateSkillName,
@@ -211,6 +212,13 @@ export function WeaponDetailPage() {
             {Object.entries(detail!.materialDetails).map(([cat, items]) => (
               <div key={cat} className="wd-mat-group">
                 <div className="wd-mat-group-name"><MaterialLink name={cat} /></div>
+                {MATERIAL_SOURCES[cat] && (
+                  <div className="wd-mat-source-info">
+                    {MATERIAL_SOURCES[cat].sources.map((s, i) => (
+                      <span key={i} className={`wd-mat-source-tag wd-mat-source-${s.type}`}>{s.zhDescription}</span>
+                    ))}
+                  </div>
+                )}
                 <div className="wd-mat-group-items">
                   {items.map((item, i) => (
                     <div key={i} className="wd-mat-detail-item">

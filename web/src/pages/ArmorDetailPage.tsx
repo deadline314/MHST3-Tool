@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { ARMORS } from "../data/armors";
 import { ARMOR_DETAILS } from "../data/armorDetails";
+import { MATERIAL_SOURCES } from "../data/materialSources";
 import {
   translateArmorName,
   translateArmorSkill,
@@ -224,6 +225,13 @@ export function ArmorDetailPage() {
                   <div className="wd-mat-detail-cat">
                     <MaterialLink name={category} />
                   </div>
+                  {MATERIAL_SOURCES[category] && (
+                    <div className="wd-mat-source-info">
+                      {MATERIAL_SOURCES[category].sources.map((s, i) => (
+                        <span key={i} className={`wd-mat-source-tag wd-mat-source-${s.type}`}>{s.zhDescription}</span>
+                      ))}
+                    </div>
+                  )}
                   <div className="wd-mat-detail-items">
                     {items.map((item, i) => (
                       <div key={i} className="wd-mat-detail-item">

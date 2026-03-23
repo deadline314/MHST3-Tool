@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { WEAPONS } from "../data/weapons";
 import { ARMORS } from "../data/armors";
 import { WEAPON_DETAILS } from "../data/weaponDetails";
+import { MATERIAL_SOURCES } from "../data/materialSources";
 import { toPinyin } from "../utils/search";
 import { WeaponTypeIcon } from "../components/WeaponTypeIcon";
 import { translateSkillName, translateWeaponName, translateArmorName, translateArmorSkill, translateMaterialName, findMonsterForMaterial } from "../data/weaponTranslations";
@@ -51,15 +52,20 @@ function slotsDisplay(s: { lv1: number; lv2: number; lv3: number }): string {
   return parts.length > 0 ? parts.join(" ") : "-";
 }
 
-function MaterialChip({ material }: { material: string }) {
+function MaterialChip({ material, compact }: { material: string; compact?: boolean }) {
   const monster = findMonsterForMaterial(material);
   const zhName = translateMaterialName(material);
+  const source = MATERIAL_SOURCES[material];
   if (monster) {
     return (
-      <Link to={`/monsters/${monster.id}`} className="eq-material-chip eq-material-link" title={`→ ${monster.name}`}>
+      <Link to={`/monsters/${monster.id}`} className="eq-material-chip eq-material-link" title={`→ ${monster.name}`} onClick={(e) => e.stopPropagation()}>
         {zhName}
       </Link>
     );
+  }
+  if (source && !compact) {
+    const tip = source.sources.map((s) => `${s.zhDescription}`).join("；");
+    return <span className="eq-material-chip eq-material-source" title={tip}>{zhName}</span>;
   }
   return <span className="eq-material-chip">{zhName}</span>;
 }
@@ -99,6 +105,9 @@ function WeaponCard({ weapon }: { weapon: Weapon }) {
               </span>
             ))}
           </div>
+        )}
+        {weapon.materials.length > 0 && (
+          <div className="eq-card-materials">{weapon.materials.map((m, i) => <MaterialChip key={i} material={m} />)}</div>
         )}
       </div>
     </Link>

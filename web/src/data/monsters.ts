@@ -258,7 +258,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
   {
     category: "特殊（劇情 / Exotic / Honed）",
     monsters: [
-      { name: "強化斬龍", nameEN: "Honed Glavenus", nameJP: "強化竜ディノバルド", species: "獸龍種", normalAttack: "速度", specialAttacks: "[赤熱化-尾巴]: 技巧 / [赤熱化-喉嚨]: 力量" },
+      { name: "強化斬龍", nameEN: "Honed Glavenus", nameJP: "強化竜ディノバルド", species: "獸龍種", normalAttack: "速度", specialAttacks: "[赤熱化【尾巴】]: 力量 / [赤熱化【喉嚨】]: 技巧" },
       { name: "超龍化蒼火龍", nameEN: "Bound Azure Rathalos", nameJP: "超龍化リオレウス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [超龍化解放]: 技巧" },
       { name: "超龍化冰狼龍", nameEN: "Bound Lunagaron", nameJP: "超龍化ルナガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量 / [超龍化解放]: 技巧" },
       { name: "珍種迅猛龍王", nameEN: "Exotic Velocidrome", nameJP: "珍種ドスランポス", species: "鳥龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
