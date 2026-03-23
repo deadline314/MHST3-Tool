@@ -206,7 +206,7 @@ const DATA: Record<string, FormData[]> = {
     f("氷霧纏", [c("尾巴【氷纏】"), p("腳部【氷纏】"), b("頭部【氷纏】")]),
   ],
 
-  // === 兇異 ===
+  // === 凶異 ===
   "Feral Velocidrome": [f("通常", [c("軀幹"), p("本體"), b("頭部")])],
   "Feral Great Izuchi": [f("通常", [c("尾巴"), p("軀幹"), b("頭部")])],
   "Feral Yian Kut-Ku": [f("通常", [c("尾巴"), p("翅膀"), b("頭部")])],

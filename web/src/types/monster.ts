@@ -88,14 +88,15 @@ export const ELEMENT_COLORS: Record<string, string> = {
   無屬性: "#95a5a6",
   火: "#e74c3c",
   火屬性: "#e74c3c",
-  水: "#3498db",
-  水屬性: "#3498db",
+  水: "#1e88e5",
+  水屬性: "#1e88e5",
   雷: "#f1c40f",
   雷屬性: "#f1c40f",
-  氷: "#74b9ff",
-  氷屬性: "#74b9ff",
+  氷: "#81d4fa",
+  氷屬性: "#81d4fa",
   龍: "#a855f7",
   龍屬性: "#a855f7",
+  彩色: "linear-gradient(90deg, #e74c3c, #f1c40f, #2ecc71, #1e88e5, #a855f7)",
 };
 
 export const RESIST_LEVEL_COLORS: Record<ResistLevel, string> = {
@@ -111,13 +112,13 @@ export const CATEGORY_LIST = [
   "一般魔物",
   "隨行獸",
   "天變古龍",
-  "兇異魔物",
+  "凶異魔物",
   "侵獸",
   "突然變異",
   "特殊（劇情 / Exotic / Honed）",
 ] as const;
 
-const GROUP_CATEGORIES = new Set(["天變古龍", "兇異魔物", "侵獸", "特殊（劇情 / Exotic / Honed）"]);
+const GROUP_CATEGORIES = new Set(["天變古龍", "凶異魔物", "侵獸", "特殊（劇情 / Exotic / Honed）"]);
 
 export function categoryToGroup(category: string): string {
   return GROUP_CATEGORIES.has(category) ? category : "一般魔物";

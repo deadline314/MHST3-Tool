@@ -197,16 +197,12 @@ export function ArmorDetailPage() {
               <div key={lv} className="wd-upgrade-row">
                 <span className="wd-upgrade-lv">Lv.{lv}</span>
                 <div className="wd-upgrade-mats">
-                  {mats.map((m, i) => {
-                    const zhMat = translateMaterialName(m.name);
-                    return (
-                      <span key={i} className="wd-upgrade-mat">
-                        {zhMat}
-                        {zhMat !== m.name && <span className="wd-mat-jp-inline"> ({m.name})</span>}
-                        <span className="wd-pts">{m.pts}pts</span>
-                      </span>
-                    );
-                  })}
+                  {mats.map((m, i) => (
+                    <div key={i} className="wd-upgrade-item">
+                      <MaterialLink name={m.name} />
+                      <span className="wd-pts">{m.pts}pts</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}

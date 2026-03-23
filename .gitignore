@@ -1,2 +1,5 @@
 information/
 asset/
+*__pycache__*
+overlay_tool/build
+overlay_tool/dist/

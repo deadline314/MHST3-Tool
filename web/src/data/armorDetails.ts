@@ -124,9 +124,9 @@ export const ARMOR_DETAILS: Record<string, ArmorDetail> = {
     defensePerLevel: [48, 68, 108],
     decoration: "自己回復【小】",
     upgradeMaterials: {
-      1: [{name:"桜花竜素材",pts:6}],
-      2: [{name:"桜花竜素材",pts:12}, {name:"赫猿獣素材",pts:10}],
-      3: [{name:"桜花竜素材",pts:20}, {name:"砕竜素材",pts:12}, {name:"鎧玉",pts:8}],
+      1: [{name:"桜火竜素材",pts:6}],
+      2: [{name:"桜火竜素材",pts:12}, {name:"赫猿獣素材",pts:10}],
+      3: [{name:"桜火竜素材",pts:20}, {name:"砕竜素材",pts:12}, {name:"鎧玉",pts:8}],
     },
     materialDetails: {
       "赫猿獣素材": [{name:"赫猿獣の鱗",pts:1}, {name:"赫炎結晶",pts:2}, {name:"赫猿獣の骨髄",pts:5}],

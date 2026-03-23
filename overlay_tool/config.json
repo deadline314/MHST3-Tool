@@ -1,0 +1,19 @@
+{
+  "capture_region": {
+    "left": 635,
+    "top": 5,
+    "width": 1066,
+    "height": 248
+  },
+  "idle_interval_ms": 1000,
+  "found_interval_ms": 3000,
+  "clear_delay_s": 5,
+  "overlay_opacity": 0.88,
+  "overlay_position": {
+    "x": 50,
+    "y": 50
+  },
+  "ocr_model": "v5_mobile",
+  "hide_from_capture": true,
+  "refresh_interval_ms": 2000
+}

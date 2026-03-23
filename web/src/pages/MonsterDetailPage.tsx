@@ -12,6 +12,8 @@ import { getDamageEffectiveness } from "../data/damageEffectiveness";
 import { getStatusEffectiveness, STATUS_LABELS } from "../data/statusEffectiveness";
 import { getInvasiveBeast, getInvasiveEvolution, getInvasiveByUnlock, getEvolutionByUnlock, getMutationsFrom, getMutationTo, getTemperedElderInfo } from "../data/invasive";
 import { getOtomonStats, OTOMON_STAT_LABELS } from "../data/otomonStats";
+import { getHatchingSkills, getHatchingSkillDetail, hatchingSkillToZH, HATCHING_ELEMENT_LABELS } from "../data/hatchingSkills";
+import type { HatchingSkillGroup } from "../data/hatchingSkills";
 import type { StatusLevel } from "../data/statusEffectiveness";
 import { ATTACK_TYPE_COLORS, ELEMENT_COLORS, RESIST_LEVEL_COLORS } from "../types/monster";
 import type { ResistLevel } from "../types/monster";
@@ -82,6 +84,7 @@ export function MonsterDetailPage() {
   const mutationTo = getMutationTo(monster.name);
   const temperedInfo = getTemperedElderInfo(monster.name);
   const otomonStats = getOtomonStats(monster.nameEN);
+  const hatchingSkills = getHatchingSkills(monster.nameEN);
   const borderColor = ATTACK_TYPE_COLORS[monster.normalAttack] || ATTACK_TYPE_COLORS["-"];
 
   function monsterLink(nameZH: string) {
@@ -535,6 +538,38 @@ export function MonsterDetailPage() {
             <GeneDetailModal gene={geneModalGene} onClose={() => setGeneModalGene(null)} />
           )}
         </section>
+
+        {hatchingSkills && (
+          <section className="detail-section">
+            <h2 className="section-title">孵技</h2>
+            <p className="hatching-hint">依據孵蛋時的區域屬性，該魔物會學會不同的孵技。</p>
+            <div className="hatching-skills-grid">
+              {HATCHING_ELEMENT_LABELS.map(({ key, label, color }) => {
+                const skillJP = hatchingSkills[key as keyof HatchingSkillGroup];
+                const detail = getHatchingSkillDetail(skillJP);
+                return (
+                  <div key={key} className="hatching-skill-card">
+                    <div className="hatching-skill-element" style={{ color }}>{label}</div>
+                    <div className="hatching-skill-info">
+                      <span className="hatching-skill-zh">{hatchingSkillToZH(skillJP)}</span>
+                      <span className="hatching-skill-jp">{skillJP}</span>
+                      {detail && (
+                        <span className="hatching-skill-effect">{detail.effect}</span>
+                      )}
+                    </div>
+                    {detail && detail.power !== "-" && (
+                      <div className="hatching-skill-stats">
+                        <span>ST {detail.stCost}</span>
+                        <span>威力 {detail.power}</span>
+                        <span>破龍 {detail.dragonBreak}</span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {relatedMonsters.length > 0 && (
           <section className="detail-section">

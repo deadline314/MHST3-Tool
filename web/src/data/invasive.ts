@@ -43,7 +43,7 @@ export const INVASIVE_BEASTS: InvasiveBeast[] = [
   { region: "亞茲萊爾領域", location: "花陽之平原", invasive: "侵獸黑狼鳥", invasiveJP: "侵獣イャンガルルガ", requirement: "-", method: "弱冰屬性。通常技巧→憤怒力量→侵化力量。注意劇毒和火燒攻擊。憤怒模式A（蓄力x3，安全時間）和B交替出現。HP約30%後普攻變為連續閃耀爆裂（全體火燒）", unlocksMonster: "雌火龍", unlocksMonsterJP: "リオレイア", baseMonster: "黑狼鳥" },
   { region: "卡納爾塔密林", location: "恩惠之丘", invasive: "侵獸青熊獸", invasiveJP: "侵獣アオアシラ", requirement: "-", method: "歸巢條件：耗盡青熊獸的蜂蜜。重點是殺死召喚出的普通青熊獸小怪，而非BOSS本體。若侵化態結束時場上仍有2隻青熊獸，會使出即死全體攻擊（蜂蜜爪）。對異常狀態（毒、爆破、麻痺）極度脆弱", unlocksMonster: "加爾克", unlocksMonsterJP: "ガルク", baseMonster: "青熊獸" },
   { region: "卡納爾塔密林", location: "恩惠之丘東方河道（夜間限定）", invasive: "侵獸影蜘蛛", invasiveJP: "侵獣ネルスキュラ", requirement: "有「龍擊砲」技能的銃槍", method: "侵化態會隱身，只有龍擊砲和羈絆技能命中。在侵襲：死亡剪刀回合使用龍擊砲可造成強制倒地＋解除隱身。確保耐力72以上。注意睡眠、毒、封印、即死等異常狀態，可用預防旋律防範。HP約40%後死亡剪刀時機會改變來騙龍擊砲", unlocksMonster: "迅龍", unlocksMonsterJP: "ナルガクルガ", baseMonster: "影蜘蛛" },
-  { region: "卡納爾塔密林", location: "瀑布隱藏冰窟（夜間限定）", invasive: "侵獸鎌蟹", invasiveJP: "侵獣ショウグンギザミ", requirement: "同時有守勢之歌與飛躍旋律的笛子＋硬化藥", method: "歸巢條件：①第1回合對隨行獸使用硬化藥 ②第2回合用飛躍旋律將防禦提升至【大】 ③第3回合隨行獸承受侵襲：鐵塊斬。殼（頭蓋骨）型態為力量，侵化速度型，脫殼技巧型。殼型態時有反擊準備，不要攻擊。侵化態攻擊藍/黃線=速度，紅線=鐵塊斬", unlocksMonster: "泡狐龍", unlocksMonsterJP: "タマミツネ", baseMonster: "鎌蟹" },
+  { region: "卡納爾塔密林", location: "瀑布隱藏冰窟（夜間限定）", invasive: "侵獸將軍蟹", invasiveJP: "侵獣ショウグンギザミ", requirement: "同時有守勢之歌與飛躍旋律的笛子＋硬化藥", method: "歸巢條件：①第1回合對隨行獸使用硬化藥 ②第2回合用飛躍旋律將防禦提升至【大】 ③第3回合隨行獸承受侵襲：鐵塊斬。殼（頭蓋骨）型態為力量，侵化速度型，脫殼技巧型。殼型態時有反擊準備，不要攻擊。侵化態攻擊藍/黃線=速度，紅線=鐵塊斬", unlocksMonster: "泡狐龍", unlocksMonsterJP: "タマミツネ", baseMonster: "將軍蟹" },
   { region: "塔基爾坎", location: "奇岩帶西方高台（夜間限定）", invasive: "侵獸慘爪龍", invasiveJP: "侵獣オドガロン", requirement: "泥翁龍（需有掀起泥浪/泥沼地獄技能）＋穿刺武器（弓/銃槍）", method: "歸巢條件：在侵襲：紅蓮爪時同時完成「爪子部位破壞」和「身上有淤泥陷阱DEBUFF」。用穿刺武器一直打爪子，隨行獸持續使用掀起泥浪/泥沼地獄疊泥DEBUFF", unlocksMonster: "雷狼龍", unlocksMonsterJP: "ジンオウガ", baseMonster: "慘爪龍" },
   { region: "塔基爾坎", location: "巨龍之骸東南（夜間限定）", invasive: "侵獸角龍", invasiveJP: "侵獣ディアブロス", requirement: "有「隕星槌」技能的大錘＋孵技：太陽之咆哮", method: "歸巢條件：角龍遁地後左右出現沙塵，用隕星槌砸「最右邊」的目標即可強制倒地＋取消遁地。用太陽之咆哮充滿羈絆值備用。HP約50%後獄咆哮替換為全體攻擊麥克斯角", unlocksMonster: "轟龍", unlocksMonsterJP: "ティガレックス", baseMonster: "角龍" },
   { region: "桑提亞", location: "冰河東北懸崖（夜間限定）", invasive: "侵獸奇怪龍", invasiveJP: "侵獣フルフル", requirement: "有預防旋律的狩獵笛＋耐雷裝備", method: "歸巢條件：不讓竜氣獵食者成功（用雙重對決勝出），撐到第2次侵襲：死亡之聲。①第1-2回合用預防旋律防麻痺 ②第3-4回合贏得雙重對決（速度型對決） ③第5回合部位破壞+同步衝鋒。第2輪第3回合竜氣獵食者變為無屬性，必須用羈絆技擋", unlocksMonster: "冰牙龍", unlocksMonsterJP: "ベリオロス", baseMonster: "奇怪龍" },
@@ -54,10 +54,10 @@ export const INVASIVE_EVOLUTIONS: InvasiveEvolution[] = [
   { invasive: "侵獸千刃龍", unlocksMonster: "電龍", subSpecies: "-", subSpeciesCondition: "-", deviant: "青電主電龍", deviantCondition: "電龍在雷屬性地區生態S、雷屬性區域中需有至少3種雷屬性魔物" },
   { invasive: "侵獸黑狼鳥", unlocksMonster: "雌火龍", subSpecies: "櫻火龍", subSpeciesCondition: "雌火龍生態B級以上", deviant: "紫毒姬火龍", deviantCondition: "雌火龍或櫻火龍生態S、生態系中有3隻以上持毒魔物" },
   { invasive: "侵獸影蜘蛛", unlocksMonster: "迅龍", subSpecies: "綠迅龍", subSpeciesCondition: "迅龍生態A級以上", deviant: "白疾風迅龍", deviantCondition: "迅龍或綠迅龍生態S、地區中至少2隻會使用風的魔物" },
-  { invasive: "侵獸鎌蟹", unlocksMonster: "泡狐龍", subSpecies: "-", subSpeciesCondition: "-", deviant: "天眼泡狐龍", deviantCondition: "泡狐龍生態S、同時存在雷狼龍" },
+  { invasive: "侵獸將軍蟹", unlocksMonster: "泡狐龍", subSpecies: "-", subSpeciesCondition: "-", deviant: "天眼泡狐龍", deviantCondition: "泡狐龍生態S、同時存在雷狼龍" },
   { invasive: "侵獸慘爪龍", unlocksMonster: "雷狼龍", subSpecies: "獄狼龍", subSpeciesCondition: "雷狼龍生態A級以上", deviant: "金雷公雷狼龍", deviantCondition: "雷狼龍或獄狼龍生態S、同時存在泡狐龍" },
   { invasive: "侵獸角龍", unlocksMonster: "轟龍", subSpecies: "黑轟龍", subSpeciesCondition: "轟龍生態A級以上", deviant: "荒鉤爪轟龍", deviantCondition: "轟龍或黑轟龍生態S、生態系至少4隻力量型魔物" },
-  { invasive: "侵獸奇怪龍", unlocksMonster: "冰牙龍", subSpecies: "砂冰牙龍", subSpeciesCondition: "冰牙龍生態A級以上", deviant: "-", deviantCondition: "-" },
+  { invasive: "侵獸奇怪龍", unlocksMonster: "冰牙龍", subSpecies: "風牙龍", subSpeciesCondition: "冰牙龍生態A級以上", deviant: "-", deviantCondition: "-" },
 ];
 
 export const MUTATIONS: MutationInfo[] = [
@@ -75,7 +75,7 @@ export const MUTATIONS: MutationInfo[] = [
   { result: "黑轟龍", resultJP: "ティガレックス亜種", source: "轟龍", sourceJP: "ティガレックス", condition: "轟龍生態等級A以上" },
   { result: "荒鉤爪轟龍", resultJP: "荒鉤爪ティガレックス", source: "轟龍 / 黑轟龍", sourceJP: "ティガレックス / ティガレックス亜種", condition: "①轟龍或黑轟龍生態等級S ②生態系中有4隻以上力量型魔物" },
   { result: "鏖魔角龍", resultJP: "鏖魔ディアブロス", source: "角龍 / 黑角龍", sourceJP: "ディアブロス / ディアブロス亜種", condition: "①角龍或黑角龍生態等級S ②在塔基爾坎「天惠砂海」中存在角龍或黑角龍" },
-  { result: "砂冰牙龍", resultJP: "ベリオロス亜種", source: "冰牙龍", sourceJP: "ベリオロス", condition: "冰牙龍生態等級A以上" },
+  { result: "風牙龍", resultJP: "ベリオロス亜種", source: "冰牙龍", sourceJP: "ベリオロス", condition: "冰牙龍生態等級A以上" },
   { result: "蒼火龍", resultJP: "リオレウス亜種", source: "火龍", sourceJP: "リオレウス", condition: "火龍生態等級A以上" },
   { result: "黑炎王火龍", resultJP: "黒炎王リオレウス", source: "火龍 / 蒼火龍", sourceJP: "リオレウス / リオレウス亜種", condition: "①火龍或蒼火龍生態等級S ②生態系中有4隻以上飛龍種" },
 ];

@@ -521,31 +521,107 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--border); border-radius: var(--radius-lg);
 }
 
+.gene-grid-wrapper {
+  position: relative;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(60, 55, 50, 0.6), rgba(45, 42, 38, 0.8));
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(160, 140, 110, 0.35);
+  margin-bottom: 12px;
+  overflow: visible;
+  box-shadow:
+    inset 0 0 30px rgba(0,0,0,0.3),
+    0 4px 16px rgba(0,0,0,0.2);
+}
+
+.gene-grid-bg-lines {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 0;
+}
+
 .gene-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 8px; margin-bottom: 12px;
+  gap: 10px;
+  position: relative; z-index: 1;
 }
 
 .gene-slot {
-  aspect-ratio: 1; border: 2px dashed var(--border);
-  border-radius: var(--radius-md); display: flex;
+  aspect-ratio: 1;
+  border: none;
+  display: flex;
   align-items: center; justify-content: center;
   cursor: pointer; transition: all var(--transition-fast);
   padding: 6px; text-align: center;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+  background: rgba(80, 75, 68, 0.5);
+  position: relative;
+  outline: none;
+}
+.gene-slot-border-svg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity var(--transition-fast);
+}
+.gene-slot:hover { background: rgba(100, 95, 85, 0.65); }
+.gene-slot.selected {
+  background: rgba(99, 102, 241, 0.2);
+  box-shadow: inset 0 0 12px rgba(99, 102, 241, 0.3);
+}
+.gene-slot.filled {
+  background: linear-gradient(135deg, rgba(180, 100, 90, 0.25), rgba(140, 80, 70, 0.15));
+}
+.gene-slot.filled-power {
+  background: linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(180, 60, 50, 0.1));
+}
+.gene-slot.filled-speed {
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(40, 120, 180, 0.1));
+}
+.gene-slot.filled-technique {
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.2), rgba(30, 160, 90, 0.1));
+}
+
+.gene-slot-type-icon {
+  position: absolute; top: 8px; left: 8px;
+  opacity: 0.85; z-index: 2;
+}
+.gene-slot-element-dot {
+  position: absolute; bottom: 8px; right: 8px;
+  width: 8px; height: 8px; border-radius: 50%;
+  z-index: 2; border: 1px solid rgba(255,255,255,0.3);
+}
+
+.gene-grid-edge-icons {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+.gene-grid-edge-icon {
+  position: absolute;
+  display: flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(30, 28, 25, 0.85);
+  border: 1.5px solid rgba(160, 140, 110, 0.4);
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--text-muted);
 }
 .gene-slot:hover { border-color: var(--border-hover); background: var(--bg-card); }
-.gene-slot.selected { border-color: var(--accent); border-style: solid; background: var(--accent-dim); }
-.gene-slot.filled { border-style: solid; border-color: var(--green); background: rgba(46, 204, 113, 0.08); }
+.gene-slot.selected { border-color: var(--accent) !important; border-style: solid; background: var(--accent-dim); }
+.gene-slot.filled { border-style: solid; background: rgba(46, 204, 113, 0.04); }
 
-.gene-slot-content { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; }
-.gene-slot-name { font-size: 0.68rem; color: var(--text-primary); word-break: break-all; line-height: 1.2; }
-.gene-slot-jp { font-size: 0.55rem; color: var(--text-muted); font-style: italic; word-break: break-all; line-height: 1.1; }
+.gene-slot-content { display: flex; flex-direction: column; align-items: center; gap: 1px; width: 100%; }
+.gene-slot-name { font-size: 0.62rem; color: var(--text-primary); word-break: break-all; line-height: 1.15; font-weight: 600; }
+.gene-slot-jp { font-size: 0.5rem; color: var(--text-muted); font-style: italic; word-break: break-all; line-height: 1.05; }
 .gene-slot-clear {
   background: none; border: none; color: var(--text-muted);
-  font-size: 0.65rem; cursor: pointer; padding: 2px 4px;
+  font-size: 0.6rem; cursor: pointer; padding: 1px 3px;
+  position: absolute; top: 8px; right: 8px; z-index: 3;
 }
 .gene-slot-clear:hover { color: var(--red); }
-.gene-slot-empty { font-size: 1.2rem; color: var(--text-muted); }
+.gene-slot-empty { font-size: 1.2rem; color: rgba(160, 140, 110, 0.5); }
 
 .gene-picker {
   margin-top: 16px; padding: 14px;
@@ -854,6 +930,271 @@ a { color: inherit; text-decoration: none; }
 }
 .evo-card-condition, .mutation-target-condition {
   font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5;
+}
+
+/* ===== Collapsible Sections ===== */
+.collapsible-header {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.collapsible-header .section-title { margin-bottom: 0; }
+.collapsible-toggle {
+  background: none; border: none; color: var(--text-muted);
+  cursor: pointer; padding: 4px; display: flex; align-items: center;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.collapsible-toggle:hover { color: var(--text-primary); }
+.collapsible-toggle.collapsed { transform: rotate(-90deg); }
+.collapsible-body { overflow: hidden; transition: max-height 0.3s ease, opacity 0.2s ease; }
+.collapsible-body.collapsed { max-height: 0 !important; opacity: 0; padding-top: 0; padding-bottom: 0; }
+
+/* ===== Hatching Skills ===== */
+.hatching-hint { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px; }
+.hatching-skills-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 8px;
+}
+.hatching-skill-card {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 14px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+.hatching-skill-card:hover { border-color: var(--border-hover); }
+.hatching-skill-element {
+  font-size: 1.1rem; font-weight: 700; min-width: 24px; text-align: center;
+  flex-shrink: 0; padding-top: 2px;
+}
+.hatching-skill-info { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.hatching-skill-zh { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+.hatching-skill-jp { font-size: 0.72rem; color: var(--text-muted); font-style: italic; }
+.hatching-skill-effect { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.4; margin-top: 2px; }
+.hatching-skill-stats {
+  display: flex; flex-direction: column; gap: 2px; flex-shrink: 0;
+  font-size: 0.7rem; color: var(--text-muted); text-align: right; padding-top: 2px;
+}
+
+/* ===== Base Monster Selector ===== */
+.base-monster-section {
+  padding: 16px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+}
+.base-monster-selector {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.base-monster-dropdown {
+  flex: 1; min-width: 200px; padding: 8px 12px;
+  background: var(--bg-input); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text-primary);
+  font-size: 0.85rem; outline: none; cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+.base-monster-dropdown:focus { border-color: var(--accent); }
+.base-monster-preview {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 12px; background: var(--bg-secondary);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+}
+.base-monster-preview-icon { width: 32px; height: 32px; object-fit: contain; }
+.base-monster-preview-name { font-size: 0.88rem; font-weight: 600; }
+.base-monster-clear {
+  background: none; border: 1px solid var(--border); color: var(--text-muted);
+  padding: 4px 10px; border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 0.78rem; transition: all var(--transition-fast);
+}
+.base-monster-clear:hover { border-color: var(--red); color: var(--red); }
+
+/* ===== Gene Planner Stats Display ===== */
+.planner-stats-section {
+  padding: 14px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+}
+.planner-stats-grid {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.planner-stat-row {
+  display: flex; align-items: center; gap: 8px;
+}
+.planner-stat-label {
+  min-width: 36px; width: 36px; font-size: 0.78rem; font-weight: 600;
+  color: var(--text-secondary); flex-shrink: 0;
+}
+.planner-stat-bar-track {
+  flex: 1; height: 12px; background: var(--bg-secondary);
+  border-radius: 6px; overflow: hidden; min-width: 0;
+  position: relative;
+}
+.planner-stat-bar-fill {
+  height: 100%; border-radius: 6px 0 0 6px; transition: width 0.4s ease;
+  position: absolute; left: 0; top: 0;
+}
+.planner-stat-bar-bonus {
+  height: 100%; position: absolute; top: 0;
+  background: var(--green); opacity: 0.7;
+  border-radius: 0 6px 6px 0;
+  transition: width 0.4s ease, left 0.4s ease;
+  animation: bonusPulse 1.5s ease-in-out infinite alternate;
+}
+@keyframes bonusPulse {
+  from { opacity: 0.5; }
+  to { opacity: 0.85; }
+}
+.planner-stat-value {
+  min-width: 18px; width: 18px; font-size: 0.82rem; font-weight: 700;
+  color: var(--text-primary); text-align: right; flex-shrink: 0;
+}
+
+/* ===== Gene Planner Bingo Display ===== */
+.planner-bingo-section {
+  padding: 14px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+}
+.planner-bingo-grid { display: flex; flex-direction: column; gap: 6px; }
+.planner-bingo-row { display: flex; align-items: center; gap: 10px; }
+.planner-bingo-label {
+  font-size: 0.78rem; font-weight: 700; color: var(--accent);
+  min-width: 50px; flex-shrink: 0;
+}
+.planner-bingo-value {
+  font-size: 0.82rem; font-weight: 500; color: var(--text-primary);
+  padding: 3px 10px; border-radius: var(--radius-sm);
+  background: var(--bg-secondary); border: 1px solid var(--border);
+}
+
+/* ===== Gene Planner Hatching Skills ===== */
+.planner-hatching-section {
+  padding: 14px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+}
+.planner-hatching-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 6px;
+}
+.planner-hatching-card {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; background: var(--bg-secondary);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+}
+.planner-hatching-el {
+  font-weight: 700; min-width: 18px; text-align: center;
+}
+.planner-hatching-name { font-weight: 500; color: var(--text-primary); }
+.planner-hatching-jp { color: var(--text-muted); font-style: italic; font-size: 0.7rem; }
+
+/* ===== Gene Picker Modal ===== */
+.gene-picker-modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; animation: geneModalFadeIn 0.2s ease;
+}
+.gene-picker-modal {
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); max-width: 480px; width: 100%;
+  max-height: 80vh; display: flex; flex-direction: column;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(99, 102, 241, 0.08);
+  overflow: hidden;
+}
+.gene-picker-modal-close {
+  position: absolute; top: 12px; right: 12px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-muted); font-size: 1rem; cursor: pointer;
+  width: 28px; height: 28px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition-fast);
+}
+.gene-picker-modal-close:hover { color: var(--text-primary); border-color: var(--border-hover); }
+.gene-picker-modal-header {
+  padding: 16px 48px 12px 16px; position: relative;
+  border-bottom: 1px solid var(--border);
+}
+.gene-picker-tabs {
+  display: flex; gap: 0; border-bottom: 1px solid var(--border);
+}
+.gene-picker-tab {
+  flex: 1; padding: 10px 16px; border: none; background: transparent;
+  color: var(--text-secondary); font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: all var(--transition-fast);
+  border-bottom: 2px solid transparent;
+}
+.gene-picker-tab:hover { color: var(--text-primary); background: var(--bg-card); }
+.gene-picker-tab.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--accent-dim); }
+.gene-picker-modal-body {
+  flex: 1; overflow-y: auto; padding: 8px 16px 16px;
+}
+.gene-picker-modal-list {
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+.rainbow-dot {
+  background: linear-gradient(135deg, #e74c3c, #f1c40f, #2ecc71, #3498db, #a855f7) !important;
+}
+.rainbow-gene-item { border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 4px; }
+.rainbow-gene-item:disabled { opacity: 0.35; cursor: not-allowed; }
+.gene-slot.rainbow-slot {
+  background: linear-gradient(135deg,
+    rgba(231,76,60,0.15), rgba(241,196,15,0.15),
+    rgba(46,204,113,0.15), rgba(30,136,229,0.15),
+    rgba(168,85,247,0.15));
+  animation: rainbowPulse 3s ease-in-out infinite alternate;
+}
+@keyframes rainbowPulse {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.2); }
+}
+
+.bingo-lines-overlay {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 2;
+}
+.bingo-line {
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0;
+  filter: drop-shadow(0 0 4px currentColor);
+  animation: bingoLineAppear 0.6s ease-out forwards;
+}
+@keyframes bingoLineAppear {
+  from { opacity: 0; stroke-dashoffset: 100; }
+  to { opacity: 0.75; stroke-dashoffset: 0; }
+}
+.bingo-line-glow {
+  stroke-width: 8;
+  stroke-linecap: round;
+  opacity: 0;
+  filter: blur(4px);
+  animation: bingoGlowAppear 0.6s ease-out 0.1s forwards;
+}
+@keyframes bingoGlowAppear {
+  from { opacity: 0; }
+  to { opacity: 0.25; }
+}
+
+.bingo-line-legend {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+  justify-content: center;
+}
+.bingo-line-legend-item {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.68rem; color: var(--text-muted);
+  padding: 2px 8px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.bingo-line-legend-dot {
+  width: 10px; height: 3px; border-radius: 2px;
+}
+
+/* ===== Bingo Achieved/Dimmed ===== */
+.bingo-achieved { opacity: 1; }
+.bingo-achieved .planner-bingo-label { color: var(--green); }
+.bingo-achieved .planner-bingo-value { color: var(--green); border-color: var(--green); background: rgba(46, 204, 113, 0.1); }
+.bingo-dimmed { opacity: 0.35; }
+
+/* ===== Stat Bonus ===== */
+.stat-bonus {
+  font-size: 0.72rem; font-weight: 700; color: var(--green);
+  min-width: 32px; width: 32px; text-align: left; flex-shrink: 0;
 }
 
 /* ===== Responsive ===== */
