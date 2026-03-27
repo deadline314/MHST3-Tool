@@ -198,7 +198,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     monsters: [
       { name: "影蜘蛛", nameEN: "Nerscylla", nameJP: "ネルスキュラ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
       { name: "骸蜘蛛", nameEN: "Shrouded Nerscylla", nameJP: "ネルスキュラ亜種", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
-      { name: "妃蜘蛛", nameEN: "Rakna-Kadaki", nameJP: "ヤツカダキ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[絲線纏身]: 技巧 / 纏絲【腳】: 技巧 / [纏絲【繭】]: 速度" },
+      { name: "妃蜘蛛", nameEN: "Rakna-Kadaki", nameJP: "ヤツカダキ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[無蛛絲]: 技巧 / 絲線纏身【腳】: 技巧 / [絲線纏身【繭】]: 速度" },
       { name: "臣蜘蛛", nameEN: "Rachnoid", nameJP: "ツケヒバキ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "-" },
     ],
   },
@@ -319,7 +319,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "凶異怨虎龍", nameEN: "Feral Magnamalo", nameJP: "凶異マガイマガド", species: "牙龍種", normalAttack: "速度", specialAttacks: "[鬼火臨界]: 技巧 / [鬼火纏身]: 力量" },
       { name: "凶異浮岳龍", nameEN: "Feral Yama Tsukami", nameJP: "凶異ヤマツカミ", species: "古龍種", normalAttack: "力量", specialAttacks: "[張口]: 速度" },
       { name: "凶異赫猿獸", nameEN: "Feral Ajarakan", nameJP: "凶異アジャラカン", species: "牙獸種", normalAttack: "技巧", specialAttacks: "[赤熱化]: 力量" },
-      { name: "凶異妃蜘蛛", nameEN: "Feral Rakna-Kadaki", nameJP: "凶異ヤツカダキ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[絲線纏身(腳)]: 技巧 / [絲線纏身(繭)]: 速度" },
+      { name: "凶異妃蜘蛛", nameEN: "Feral Rakna-Kadaki", nameJP: "凶異ヤツカダキ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[無蛛絲]: 技巧 / [絲線纏身(腳)]: 技巧 / [絲線纏身(繭)]: 速度" },
       { name: "凶異雪獅子王", nameEN: "Feral Blangonga", nameJP: "凶異ドドブランゴ", species: "牙獸種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
     ],
   },

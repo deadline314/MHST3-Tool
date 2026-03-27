@@ -533,7 +533,7 @@
     "nameJP": "ヤツカダキ",
     "species": "鋏角種",
     "normalAttack": "技巧",
-    "specialAttacks": "[絲線纏身]: 技巧 / 纏絲【腳】: 技巧 / [纏絲【繭】]: 速度"
+    "specialAttacks": "[無蛛絲]: 技巧 / 絲線纏身【腳】: 技巧 / [絲線纏身【繭】]: 速度"
   },
   {
     "name": "臣蜘蛛",
@@ -1189,7 +1189,7 @@
     "nameJP": "凶異ヤツカダキ",
     "species": "鋏角種",
     "normalAttack": "技巧",
-    "specialAttacks": "[絲線纏身(腳)]: 技巧 / [絲線纏身(繭)]: 速度"
+    "specialAttacks": "[無蛛絲]: 技巧 / [絲線纏身(腳)]: 技巧 / [絲線纏身(繭)]: 速度"
   },
   {
     "name": "凶異雪獅子王",
