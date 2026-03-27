@@ -199,7 +199,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "影蜘蛛", nameEN: "Nerscylla", nameJP: "ネルスキュラ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
       { name: "骸蜘蛛", nameEN: "Shrouded Nerscylla", nameJP: "ネルスキュラ亜種", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
       { name: "妃蜘蛛", nameEN: "Rakna-Kadaki", nameJP: "ヤツカダキ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "[蓄絲]: 技巧 / 纏絲【腳】: 技巧 / [纏絲【繭】]: 速度" },
-      { name: "蛛蟲", nameEN: "Rachnoid", nameJP: "ツケヒバキ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "-" },
+      { name: "臣蜘蛛", nameEN: "Rachnoid", nameJP: "ツケヒバキ", species: "鋏角種", normalAttack: "技巧", specialAttacks: "-" },
     ],
   },
   {
