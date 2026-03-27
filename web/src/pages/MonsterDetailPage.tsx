@@ -14,6 +14,7 @@ import { getInvasiveBeast, getInvasiveEvolution, getInvasiveByUnlock, getEvoluti
 import { getOtomonStats, OTOMON_STAT_LABELS } from "../data/otomonStats";
 import { getHatchingSkills, getHatchingSkillDetail, hatchingSkillToZH, HATCHING_ELEMENT_LABELS } from "../data/hatchingSkills";
 import type { HatchingSkillGroup } from "../data/hatchingSkills";
+import { MONSTER_KINSHIP, KINSHIP_SKILLS } from "../data/kinshipSkills";
 import type { StatusLevel } from "../data/statusEffectiveness";
 import { ATTACK_TYPE_COLORS, ELEMENT_COLORS, RESIST_LEVEL_COLORS } from "../types/monster";
 import type { ResistLevel } from "../types/monster";
@@ -85,6 +86,8 @@ export function MonsterDetailPage() {
   const temperedInfo = getTemperedElderInfo(monster.name);
   const otomonStats = getOtomonStats(monster.nameEN);
   const hatchingSkills = getHatchingSkills(monster.nameEN);
+  const kinshipSkillJP = MONSTER_KINSHIP[monster.nameEN];
+  const kinshipSkill = kinshipSkillJP ? KINSHIP_SKILLS[kinshipSkillJP] : null;
   const borderColor = ATTACK_TYPE_COLORS[monster.normalAttack] || ATTACK_TYPE_COLORS["-"];
 
   function monsterLink(nameZH: string) {
@@ -538,6 +541,27 @@ export function MonsterDetailPage() {
             <GeneDetailModal gene={geneModalGene} onClose={() => setGeneModalGene(null)} />
           )}
         </section>
+
+        {kinshipSkill && (
+          <section className="detail-section">
+            <h2 className="section-title">絆技</h2>
+            <div className="kinship-skill-card">
+              <div className="kinship-skill-header">
+                <span className="kinship-skill-zh">{kinshipSkill.nameZH}</span>
+                <span className="kinship-skill-jp">{kinshipSkill.nameJP}</span>
+                <span className="kinship-skill-element" style={{ color: ELEMENT_COLORS[kinshipSkill.element] || "#95a5a6" }}>{kinshipSkill.element}</span>
+              </div>
+              <div className="kinship-skill-body">
+                <span className="kinship-skill-target">{kinshipSkill.target}</span>
+                <span className="kinship-skill-effect">{kinshipSkill.effect}</span>
+              </div>
+              <div className="kinship-skill-stats">
+                <span>威力 {kinshipSkill.power}</span>
+                <span>破龍力 {kinshipSkill.dragonBreak}</span>
+              </div>
+            </div>
+          </section>
+        )}
 
         {hatchingSkills && (
           <section className="detail-section">
