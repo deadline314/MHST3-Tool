@@ -487,7 +487,7 @@ class OverlayWindow:
             w.destroy()
         cols, rows = self._body.grid_size()
         for i in range(cols):
-            self._body.columnconfigure(i, weight=0, minsize=0)
+            self._body.columnconfigure(i, weight=0, minsize=0, uniform="")
         for i in range(rows):
             self._body.rowconfigure(i, weight=0, minsize=0)
 

@@ -293,7 +293,7 @@
     "nameJP": "オドガロン",
     "species": "牙龍種",
     "normalAttack": "速度",
-    "specialAttacks": "[憤怒]: 速度 / [暴走]: 力量"
+    "specialAttacks": "[憤怒]: 速度 / [狂暴化]: 力量"
   },
   {
     "name": "兇爪龍",
@@ -301,7 +301,7 @@
     "nameJP": "オドガロン亜種",
     "species": "牙龍種",
     "normalAttack": "速度",
-    "specialAttacks": "[憤怒]: 速度 / [暴走]: 力量"
+    "specialAttacks": "[憤怒]: 速度 / [狂暴化]: 力量"
   },
   {
     "name": "怨虎龍",
@@ -749,7 +749,7 @@
     "nameJP": "エスピナス",
     "species": "飛龍種",
     "normalAttack": "力量",
-    "specialAttacks": "[憤怒]: 速度 / [暴走]: 力量"
+    "specialAttacks": "[憤怒]: 速度 / [狂暴化]: 力量"
   },
   {
     "name": "煌雷龍",
@@ -1117,7 +1117,7 @@
     "nameJP": "凶異エスピナス",
     "species": "飛龍種",
     "normalAttack": "力量",
-    "specialAttacks": "[憤怒]: 速度 / [暴走]: 力量"
+    "specialAttacks": "[憤怒]: 速度 / [狂暴化]: 力量"
   },
   {
     "name": "凶異飛雷龍",

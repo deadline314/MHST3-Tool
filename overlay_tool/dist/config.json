@@ -1,9 +1,9 @@
 {
   "capture_region": {
-    "left": 944,
-    "top": 3,
-    "width": 691,
-    "height": 185
+    "left": 361,
+    "top": 14,
+    "width": 2185,
+    "height": 154
   },
   "idle_interval_ms": 500,
   "found_interval_ms": 3000,
@@ -12,8 +12,8 @@
   "overlay_position": {
     "x": 13,
     "y": 172,
-    "w": 542,
-    "h": 391
+    "w": 332,
+    "h": 327
   },
   "ocr_model": "v5_server",
   "hide_from_capture": true
