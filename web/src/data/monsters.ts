@@ -141,7 +141,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "雷狼龍", nameEN: "Zinogre", nameJP: "ジンオウガ", species: "牙龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧 / [超帶電]: 力量" },
       { name: "獄狼龍", nameEN: "Stygian Zinogre", nameJP: "ジンオウガ亜種", species: "牙龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度 / [龍氣]: 力量" },
       { name: "金雷公雷狼龍", nameEN: "Thunderlord Zinogre", nameJP: "金雷公ジンオウガ", species: "牙龍種", normalAttack: "力量", specialAttacks: "-" },
-      { name: "冰狼龍", nameEN: "Lunagaron", nameJP: "ルナガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[冰鎧]: 力量" },
+      { name: "冰狼龍", nameEN: "Lunagaron", nameJP: "ルナガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "飛雷龍", nameEN: "Tobi-Kadachi", nameJP: "トビカガチ", species: "牙龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧" },
       { name: "慘爪龍", nameEN: "Odogaron", nameJP: "オドガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 速度 / [狂暴化]: 力量" },
       { name: "兇爪龍", nameEN: "Ebony Odogaron", nameJP: "オドガロン亜種", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 速度 / [狂暴化]: 力量" },
@@ -152,7 +152,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     category: "獸龍種",
     monsters: [
       { name: "土砂龍", nameEN: "Barroth", nameJP: "ボルボロス", species: "獸龍種", normalAttack: "速度", specialAttacks: "[泥漿纏身]: 技巧" },
-      { name: "冰碎龍", nameEN: "Jade Barroth", nameJP: "ボルボロス亜種", species: "獸龍種", normalAttack: "力量", specialAttacks: "[冰鎧]: 技巧 / [憤怒]: 速度" },
+      { name: "冰碎龍", nameEN: "Jade Barroth", nameJP: "ボルボロス亜種", species: "獸龍種", normalAttack: "力量", specialAttacks: "[冰雪纏身]: 技巧 / [憤怒]: 速度" },
       { name: "角龍", nameEN: "Diablos", nameJP: "ディアブロス", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
       { name: "黑角龍", nameEN: "Black Diablos", nameJP: "ディアブロス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
       { name: "鏖魔角龍", nameEN: "Bloodbath Diablos", nameJP: "鏖魔ディアブロス", species: "飛龍種", normalAttack: "速度", specialAttacks: "-" },
@@ -259,8 +259,8 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     category: "特殊（劇情 / Exotic / Honed）",
     monsters: [
       { name: "強化斬龍", nameEN: "Honed Glavenus", nameJP: "強化竜ディノバルド", species: "獸龍種", normalAttack: "速度", specialAttacks: "[赤熱化【尾巴】]: 力量 / [赤熱化【喉嚨】]: 技巧" },
-      { name: "超龍化蒼火龍", nameEN: "Bound Azure Rathalos", nameJP: "超龍化リオレウス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [超龍化解放]: 技巧" },
-      { name: "超龍化冰狼龍", nameEN: "Bound Lunagaron", nameJP: "超龍化ルナガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量 / [超龍化解放]: 技巧" },
+      { name: "超龍化蒼火龍", nameEN: "Bound Azure Rathalos", nameJP: "超龍化リオレウス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [超龍化【解放】]: 技巧" },
+      { name: "超龍化冰狼龍", nameEN: "Bound Lunagaron", nameJP: "超龍化ルナガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量 / [超龍化【解放】]: 技巧" },
       { name: "珍種迅猛龍王", nameEN: "Exotic Velocidrome", nameJP: "珍種ドスランポス", species: "鳥龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "珍種千刃龍", nameEN: "Exotic Seregios", nameJP: "珍種セルレギオス", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 技巧" },
       { name: "珍種風漂龍", nameEN: "Exotic Legiana", nameJP: "珍種レイギエナ", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒【滯空】]: 力量 / [滯空]: 技巧" },

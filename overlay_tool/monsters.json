@@ -277,7 +277,7 @@
     "nameJP": "ルナガロン",
     "species": "牙龍種",
     "normalAttack": "速度",
-    "specialAttacks": "[冰鎧]: 力量"
+    "specialAttacks": "[憤怒]: 力量"
   },
   {
     "name": "飛雷龍",
@@ -325,7 +325,7 @@
     "nameJP": "ボルボロス亜種",
     "species": "獸龍種",
     "normalAttack": "力量",
-    "specialAttacks": "[冰鎧]: 技巧 / [憤怒]: 速度"
+    "specialAttacks": "[冰雪纏身]: 技巧 / [憤怒]: 速度"
   },
   {
     "name": "角龍",
@@ -829,7 +829,7 @@
     "nameJP": "超龍化リオレウス亜種",
     "species": "飛龍種",
     "normalAttack": "力量",
-    "specialAttacks": "[憤怒]: 速度 / [超龍化解放]: 技巧"
+    "specialAttacks": "[憤怒]: 速度 / [超龍化【解放】]: 技巧"
   },
   {
     "name": "超龍化冰狼龍",
@@ -837,7 +837,7 @@
     "nameJP": "超龍化ルナガロン",
     "species": "牙龍種",
     "normalAttack": "速度",
-    "specialAttacks": "[憤怒]: 力量 / [超龍化解放]: 技巧"
+    "specialAttacks": "[憤怒]: 力量 / [超龍化【解放】]: 技巧"
   },
   {
     "name": "珍種迅猛龍王",
