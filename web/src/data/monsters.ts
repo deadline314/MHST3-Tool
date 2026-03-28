@@ -176,7 +176,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     monsters: [
       { name: "海龍", nameEN: "Lagiacrus", nameJP: "ラギアクルス", species: "海龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [蓄電]: 技巧" },
       { name: "白海龍", nameEN: "Ivory Lagiacrus", nameJP: "ラギアクルス亜種", species: "海龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量 / [蓄電]: 技巧" },
-      { name: "泡狐龍", nameEN: "Mizutsune", nameJP: "タマミツネ", species: "海龍種", normalAttack: "技巧", specialAttacks: "[泡沫]: 速度" },
+      { name: "泡狐龍", nameEN: "Mizutsune", nameJP: "タマミツネ", species: "海龍種", normalAttack: "技巧", specialAttacks: "[泡沫纏身【潤滑】]: 速度" },
       { name: "天眼泡狐龍", nameEN: "Soulseer Mizutsune", nameJP: "天眼タマミツネ", species: "海龍種", normalAttack: "速度", specialAttacks: "-" },
       { name: "泥翁龍", nameEN: "Almudron", nameJP: "オロミドロ", species: "海龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 技巧 / [大泥球]: 速度" },
       { name: "水生獸", nameEN: "Ludroth", nameJP: "ルドロス", species: "海龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 技巧" },
@@ -236,7 +236,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "奇怪龍", nameEN: "Khezu", nameJP: "フルフル", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[帶電]: 力量" },
       { name: "紅怪龍", nameEN: "Red Khezu", nameJP: "フルフル亜種", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[帶電]: 力量 / [放電]: 速度" },
       { name: "棘龍", nameEN: "Espinas", nameJP: "エスピナス", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [狂暴化]: 力量" },
-      { name: "煌雷龍", nameEN: "Rey Dau", nameJP: "レ・ダウ", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
+      { name: "煌雷龍", nameEN: "Rey Dau", nameJP: "レ・ダウ", species: "飛龍種", normalAttack: "速度", specialAttacks: "[蒼雷晶纏身]: 力量" },
       { name: "鎖刃龍", nameEN: "Arkveld", nameJP: "アルシュベルド", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 力量" },
     ],
   },
