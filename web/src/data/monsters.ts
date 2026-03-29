@@ -237,7 +237,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "紅怪龍", nameEN: "Red Khezu", nameJP: "フルフル亜種", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[帶電]: 力量 / [放電]: 速度" },
       { name: "棘龍", nameEN: "Espinas", nameJP: "エスピナス", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [狂暴化]: 力量" },
       { name: "煌雷龍", nameEN: "Rey Dau", nameJP: "レ・ダウ", species: "飛龍種", normalAttack: "速度", specialAttacks: "[蒼雷晶纏身]: 力量" },
-      { name: "鎖刃龍", nameEN: "Arkveld", nameJP: "アルシュベルド", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 力量" },
+      { name: "鎖刃龍", nameEN: "Arkveld", nameJP: "アルシュベルド", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[龍氣纏身]: 力量" },
     ],
   },
   {
