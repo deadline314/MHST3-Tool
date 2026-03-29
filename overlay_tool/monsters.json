@@ -816,6 +816,14 @@
     "specialAttacks": "[憤怒]: 速度"
   },
   {
+    "name": "界龍",
+    "nameEN": "Aenshin",
+    "nameJP": "アエンシン",
+    "species": "古龍種",
+    "normalAttack": "技巧",
+    "specialAttacks": "[厄石防護]: 技巧 / [厄石解放]: 力量 / [封龍]: 力量"
+  },
+  {
     "name": "強化斬龍",
     "nameEN": "Honed Glavenus",
     "nameJP": "強化竜ディノバルド",

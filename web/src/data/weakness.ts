@@ -116,6 +116,7 @@ const WEAKNESS_RAW: Record<string, [string, string, string, string, string, stri
   "Bound Lunagaron": ["普通", "大弱點", "微耐", "弱點", "耐性", "普通"],
   "Velkhana": ["普通", "大弱點", "微耐", "弱點", "耐性", "弱點"],
   "Velocidrome": ["普通", "弱點", "普通", "普通", "大弱點", "耐性"],
+  "Aenshin": ["耐性", "大弱點", "弱點", "弱點", "弱點", "大弱點"],
   "Wind Serpent Ibushi": ["普通", "大弱點", "普通", "微耐", "耐性", "弱點"],
   "Yama Tsukami": ["普通", "微耐", "普通", "耐性", "弱點", "大弱點"],
   "Yama Tsukami (Feral)": ["普通", "微耐", "普通", "耐性", "弱點", "大弱點"],

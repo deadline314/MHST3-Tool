@@ -163,6 +163,11 @@ const DATA: Record<string, FormData[]> = {
   ],
   "Thunder Serpent Narwa": [f("通常", [c("本體")])],
   "Wind Serpent Ibushi": [f("通常", [c("本體")])],
+  "Aenshin": [
+    f("厄石防護", [c("本體")]),
+    f("厄石解放", [c("裝核"), p("本體"), b("頭部")]),
+    f("第二形態", [a("真核")]),
+  ],
 
   // === 侵獸 ===
   "Invasive Yian Garuga": [
