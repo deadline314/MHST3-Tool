@@ -245,7 +245,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     monsters: [
       { name: "冰咒龍", nameEN: "Velkhana", nameJP: "イヴェルカーナ", species: "古龍種", normalAttack: "技巧", specialAttacks: "[寒冰護體]: 速度 / [霧冰護體]: 力量" },
       { name: "溟波龍", nameEN: "Namielle", nameJP: "ネロミェール", species: "古龍種", normalAttack: "技巧", specialAttacks: "[蓄水]: 速度 / [枯竭]: 力量" },
-      { name: "爵銀龍", nameEN: "Malzeno", nameJP: "メルゼナ", species: "古龍種", normalAttack: "速度", specialAttacks: "[封龍]: 速度 / [血氣]: 技巧" },
+      { name: "爵銀龍", nameEN: "Malzeno", nameJP: "メルゼナ", species: "古龍種", normalAttack: "速度", specialAttacks: "[封龍]: 速度 / [血氣活化]: 技巧" },
       { name: "浮岳龍", nameEN: "Yama Tsukami", nameJP: "ヤマツカミ", species: "古龍種", normalAttack: "力量", specialAttacks: "[張口]: 速度 / [憤怒]: 力量" },
       { name: "雷神龍", nameEN: "Thunder Serpent Narwa", nameJP: "ナルハタタヒメ", species: "古龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧" },
       { name: "風神龍", nameEN: "Wind Serpent Ibushi", nameJP: "イブシマキヒコ", species: "古龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
