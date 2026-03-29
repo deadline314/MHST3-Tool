@@ -158,7 +158,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "鏖魔角龍", nameEN: "Bloodbath Diablos", nameJP: "鏖魔ディアブロス", species: "飛龍種", normalAttack: "速度", specialAttacks: "-" },
       { name: "斬龍", nameEN: "Glavenus", nameJP: "ディノバルド", species: "獸龍種", normalAttack: "速度", specialAttacks: "[赤熱化【尾巴】]: 力量 / [赤熱化【喉嚨】]: 技巧" },
       { name: "燼滅刃斬龍", nameEN: "Hellblade Glavenus", nameJP: "燼滅刃ディノバルド", species: "獸龍種", normalAttack: "速度", specialAttacks: "-" },
-      { name: "恐暴龍", nameEN: "Deviljho", nameJP: "イビルジョー", species: "獸龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [龍氣]: 力量" },
+      { name: "恐暴龍", nameEN: "Deviljho", nameJP: "イビルジョー", species: "獸龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度 / [飢餓]: 力量" },
       { name: "蠻顎龍", nameEN: "Anjanath", nameJP: "アンジャナフ", species: "獸龍種", normalAttack: "力量", specialAttacks: "[發熱]: 技巧" },
       { name: "雷顎龍", nameEN: "Fulgur Anjanath", nameJP: "アンジャナフ亜種", species: "獸龍種", normalAttack: "力量", specialAttacks: "[帶電]: 速度" },
       { name: "碎龍", nameEN: "Brachydios", nameJP: "ブラキディオス", species: "獸龍種", normalAttack: "力量", specialAttacks: "[黏菌活性]: 速度 / [憤怒]: 力量" },
