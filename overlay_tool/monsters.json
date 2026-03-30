@@ -684,8 +684,8 @@
     "nameEN": "Tigrex",
     "nameJP": "ティガレックス",
     "species": "飛龍種",
-    "normalAttack": "力量",
-    "specialAttacks": "[憤怒]: 速度"
+    "normalAttack": "速度",
+    "specialAttacks": "[憤怒]: 力量"
   },
   {
     "name": "黑轟龍",

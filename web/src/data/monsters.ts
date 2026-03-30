@@ -227,7 +227,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "風漂龍", nameEN: "Legiana", nameJP: "レイギエナ", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒【滯空】]: 力量 / [滯空]: 技巧" },
       { name: "電龍", nameEN: "Astalos", nameJP: "ライゼクス", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "青電主電龍", nameEN: "Boltreaver Astalos", nameJP: "青電主ライゼクス", species: "飛龍種", normalAttack: "技巧", specialAttacks: "-" },
-      { name: "轟龍", nameEN: "Tigrex", nameJP: "ティガレックス", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
+      { name: "轟龍", nameEN: "Tigrex", nameJP: "ティガレックス", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "黑轟龍", nameEN: "Brute Tigrex", nameJP: "ティガレックス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
       { name: "荒鉤爪轟龍", nameEN: "Grimclaw Tigrex", nameJP: "荒鉤爪ティガレックス", species: "飛龍種", normalAttack: "力量", specialAttacks: "-" },
       { name: "千刃龍", nameEN: "Seregios", nameJP: "セルレギオス", species: "飛龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度" },
