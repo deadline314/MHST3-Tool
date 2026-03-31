@@ -389,7 +389,7 @@
     "nameJP": "アンジャナフ亜種",
     "species": "獸龍種",
     "normalAttack": "力量",
-    "specialAttacks": "[帶電]: 速度"
+    "specialAttacks": "[帶電]: 速度 / [強帶電]: 速度"
   },
   {
     "name": "碎龍",
@@ -837,7 +837,7 @@
     "nameJP": "超龍化リオレウス亜種",
     "species": "飛龍種",
     "normalAttack": "力量",
-    "specialAttacks": "[憤怒]: 速度 / [超龍化【解放】]: 技巧"
+    "specialAttacks": "[憤怒【滯空】]: 速度 / [超龍化【解放】]: 技巧"
   },
   {
     "name": "超龍化冰狼龍",
