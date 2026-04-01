@@ -139,7 +139,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
     category: "牙龍種",
     monsters: [
       { name: "雷狼龍", nameEN: "Zinogre", nameJP: "ジンオウガ", species: "牙龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧 / [超帶電]: 力量" },
-      { name: "獄狼龍", nameEN: "Stygian Zinogre", nameJP: "ジンオウガ亜種", species: "牙龍種", normalAttack: "技巧", specialAttacks: "[憤怒]: 速度 / [龍氣]: 力量" },
+      { name: "獄狼龍", nameEN: "Stygian Zinogre", nameJP: "ジンオウガ亜種", species: "牙龍種", normalAttack: "技巧", specialAttacks: "[龍光纏身]: 速度 / [超龍光纏身]: 力量" },
       { name: "金雷公雷狼龍", nameEN: "Thunderlord Zinogre", nameJP: "金雷公ジンオウガ", species: "牙龍種", normalAttack: "力量", specialAttacks: "-" },
       { name: "冰狼龍", nameEN: "Lunagaron", nameJP: "ルナガロン", species: "牙龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "飛雷龍", nameEN: "Tobi-Kadachi", nameJP: "トビカガチ", species: "牙龍種", normalAttack: "速度", specialAttacks: "[帶電]: 技巧" },
@@ -225,7 +225,7 @@ const RAW_DATA: { category: string; monsters: RawMonster[] }[] = [
       { name: "白疾風迅龍", nameEN: "Silverwind Nargacuga", nameJP: "白疾風ナルガクルガ", species: "飛龍種", normalAttack: "速度", specialAttacks: "-" },
       { name: "綠迅龍", nameEN: "Green Nargacuga", nameJP: "ナルガクルガ亜種", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "風漂龍", nameEN: "Legiana", nameJP: "レイギエナ", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒【滯空】]: 力量 / [滯空]: 技巧" },
-      { name: "電龍", nameEN: "Astalos", nameJP: "ライゼクス", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
+      { name: "電龍", nameEN: "Astalos", nameJP: "ライゼクス", species: "飛龍種", normalAttack: "速度", specialAttacks: "[電荷]: 力量" },
       { name: "青電主電龍", nameEN: "Boltreaver Astalos", nameJP: "青電主ライゼクス", species: "飛龍種", normalAttack: "技巧", specialAttacks: "-" },
       { name: "轟龍", nameEN: "Tigrex", nameJP: "ティガレックス", species: "飛龍種", normalAttack: "速度", specialAttacks: "[憤怒]: 力量" },
       { name: "黑轟龍", nameEN: "Brute Tigrex", nameJP: "ティガレックス亜種", species: "飛龍種", normalAttack: "力量", specialAttacks: "[憤怒]: 速度" },
