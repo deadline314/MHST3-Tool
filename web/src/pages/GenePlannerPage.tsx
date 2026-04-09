@@ -19,9 +19,26 @@ const RAINBOW_GENE = "__rainbow__";
 const RAINBOW_LABEL = "彩色基因";
 
 const GENE_TYPES = ["力量", "速度", "技巧", "無"] as const;
-const GENE_ELEMENTS = ["無屬性", "火屬性", "水屬性", "雷屬性", "氷屬性", "龍屬性"] as const;
+const GENE_ELEMENTS = ["無屬性", "火屬性", "水屬性", "雷屬性", "冰屬性", "龍屬性"] as const;
+
+const GENE_ELEMENT_ORDER: Record<string, number> = Object.fromEntries(GENE_ELEMENTS.map((e, i) => [e, i]));
+const GENE_TYPE_ORDER: Record<string, number> = Object.fromEntries(GENE_TYPES.map((t, i) => [t, i]));
+
+function sortGenesByElementAndType(genes: string[]): string[] {
+  return [...genes].sort((a, b) => {
+    const da = getGeneDetail(a);
+    const db = getGeneDetail(b);
+    const ea = da ? (GENE_ELEMENT_ORDER[da.element] ?? 99) : 99;
+    const eb = db ? (GENE_ELEMENT_ORDER[db.element] ?? 99) : 99;
+    if (ea !== eb) return ea - eb;
+    const ta = da ? (GENE_TYPE_ORDER[da.type] ?? 99) : 99;
+    const tb = db ? (GENE_TYPE_ORDER[db.type] ?? 99) : 99;
+    if (ta !== tb) return ta - tb;
+    return a.localeCompare(b);
+  });
+}
 const GENE_SKILL_TYPES = ["主動", "被動"] as const;
-const GENE_TARGETS = ["敵單體", "敵全體", "自身", "我方全體", "敵隨機"] as const;
+const GENE_TARGETS = ["敵單體", "敵方全體", "自身", "我方全體", "敵隨機"] as const;
 const GENE_QUERY_COLLAPSED_HEIGHT = 108;
 
 interface GeneSlot {
@@ -169,9 +186,13 @@ export function GenePlannerPage() {
   const allHatchingNames = useMemo(() => getAllHatchingSkillNames(), []);
 
   const filteredPickerGenes = useMemo(() => {
-    if (!pickerSearch) return allGenes;
-    const q = pickerSearch.toLowerCase();
-    return allGenes.filter((g) => g.toLowerCase().includes(q) || geneToZH(g).toLowerCase().includes(q));
+    const genes = pickerSearch
+      ? allGenes.filter((g) => {
+          const q = pickerSearch.toLowerCase();
+          return g.toLowerCase().includes(q) || geneToZH(g).toLowerCase().includes(q);
+        })
+      : allGenes;
+    return sortGenesByElementAndType(genes);
   }, [allGenes, pickerSearch]);
 
   const filteredPickerHatching = useMemo(() => {
@@ -257,21 +278,23 @@ export function GenePlannerPage() {
       });
     }
 
-    if (geneFilterActiveCount === 0) return filtered;
+    if (geneFilterActiveCount > 0) {
+      filtered = filtered.filter((gene) => {
+        const detail = getGeneDetail(gene);
+        if (!detail) return false;
+        if (geneFilters.types.size > 0 && !geneFilters.types.has(detail.type)) return false;
+        if (geneFilters.elements.size > 0 && !geneFilters.elements.has(detail.element)) return false;
+        if (geneFilters.skillTypes.size > 0 && !geneFilters.skillTypes.has(detail.skillType)) return false;
+        if (geneFilters.targets.size > 0 && !(detail.target && geneFilters.targets.has(detail.target))) return false;
+        if (geneFilters.statusTags.size > 0) {
+          const tags = getGeneStatusTags(gene);
+          if (!tags.some((t) => geneFilters.statusTags.has(t))) return false;
+        }
+        return true;
+      });
+    }
 
-    return filtered.filter((gene) => {
-      const detail = getGeneDetail(gene);
-      if (!detail) return geneFilterActiveCount === 0;
-      if (geneFilters.types.size > 0 && !geneFilters.types.has(detail.type)) return false;
-      if (geneFilters.elements.size > 0 && !geneFilters.elements.has(detail.element)) return false;
-      if (geneFilters.skillTypes.size > 0 && !geneFilters.skillTypes.has(detail.skillType)) return false;
-      if (geneFilters.targets.size > 0 && !(detail.target && geneFilters.targets.has(detail.target))) return false;
-      if (geneFilters.statusTags.size > 0) {
-        const tags = getGeneStatusTags(gene);
-        if (!tags.some((t) => geneFilters.statusTags.has(t))) return false;
-      }
-      return true;
-    });
+    return sortGenesByElementAndType(filtered);
   }, [allGenes, usedGenes, geneFilters, geneFilterActiveCount, geneQuerySearch]);
 
   useEffect(() => {

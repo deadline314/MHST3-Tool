@@ -93,7 +93,7 @@ export const ELEMENT_COLORS: Record<string, string> = {
   雷: "#f1c40f",
   雷屬性: "#f1c40f",
   氷: "#81d4fa",
-  氷屬性: "#81d4fa",
+  冰屬性: "#81d4fa",
   龍: "#a855f7",
   龍屬性: "#a855f7",
   彩色: "linear-gradient(90deg, #e74c3c, #f1c40f, #2ecc71, #1e88e5, #a855f7)",
@@ -126,7 +126,7 @@ export function categoryToGroup(category: string): string {
 
 export type WeaponType = "大劍" | "太刀" | "大鎚" | "狩獵笛" | "弓" | "銃槍";
 
-export type StatusAilment = "毒" | "灼傷" | "麻痺" | "睡眠" | "爆破" | "裂傷" | "目眩";
+export type StatusAilment = "毒" | "灼傷" | "麻痺" | "睡眠" | "爆破" | "裂傷" | "黑暗";
 
 export interface SlotConfig {
   lv1: number;
@@ -217,7 +217,7 @@ export const WEAPON_TYPE_JP: Record<WeaponType, string> = {
 
 export const ELEMENT_LIST = ["無", "火", "水", "雷", "氷", "龍"] as const;
 
-export const STATUS_AILMENT_LIST: StatusAilment[] = ["毒", "灼傷", "麻痺", "睡眠", "爆破", "裂傷", "目眩"];
+export const STATUS_AILMENT_LIST: StatusAilment[] = ["毒", "灼傷", "麻痺", "睡眠", "爆破", "裂傷", "黑暗"];
 
 export const ARMOR_RESIST_LABELS: Record<string, string> = {
   "⬆︎⬆︎": "大耐",

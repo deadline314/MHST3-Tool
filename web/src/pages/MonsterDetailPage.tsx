@@ -585,7 +585,7 @@ export function MonsterDetailPage() {
                       <div className="hatching-skill-stats">
                         <span>ST {detail.stCost}</span>
                         <span>威力 {detail.power}</span>
-                        <span>破龍 {detail.dragonBreak}</span>
+                        <span>破龍力 {detail.dragonBreak}</span>
                       </div>
                     )}
                   </div>

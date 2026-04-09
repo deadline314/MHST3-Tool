@@ -22,7 +22,7 @@ export const STATUS_LABELS: { key: keyof StatusEffectiveness; label: string; ico
   { key: "sleep", label: "睡眠", icon: "/status_icons/UI-Sleep.png" },
   { key: "blastblight", label: "爆破", icon: "/status_icons/UI-Blastblight.png" },
   { key: "bleeding", label: "出血", icon: "/status_icons/UI-Bleeding.png" },
-  { key: "blind", label: "目眩", icon: "/status_icons/UI-Blind.png" },
+  { key: "blind", label: "黑暗", icon: "/status_icons/UI-Blind.png" },
   { key: "stun", label: "暈眩", icon: "/status_icons/UI-Stun.png" },
   { key: "typeseal", label: "屬性封印", icon: "/status_icons/UI-Typeseal.png" },
   { key: "skillseal", label: "技能封印", icon: "/status_icons/UI-Skillseal.png" },

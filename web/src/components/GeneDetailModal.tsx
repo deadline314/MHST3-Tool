@@ -58,7 +58,7 @@ export function GeneDetailModal({ gene, onClose }: GeneDetailModalProps) {
                   )}
                   {detail.dragonBreak !== undefined && detail.dragonBreak !== "-" && (
                     <div className="gene-stat">
-                      <span className="gene-stat-label">破龍</span>
+                      <span className="gene-stat-label">破龍力</span>
                       <span className="gene-stat-value">{detail.dragonBreak}</span>
                     </div>
                   )}
